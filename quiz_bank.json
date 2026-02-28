@@ -1,0 +1,1313 @@
+[
+  {
+    "id": "easy_01",
+    "question": "What is the minimum recommended CPU speed for a server-class ePO - On-prem server?",
+    "options": [
+      "1.5 GHz",
+      "2.0 GHz",
+      "2.2 GHz",
+      "3.0 GHz"
+    ],
+    "answer": "2.2 GHz",
+    "difficulty": "Easy",
+    "explanation": "According to Important sizing considerations, the minimum CPU core speed is 2.2 GHz."
+  },
+  {
+    "id": "easy_02",
+    "question": "How much RAM should be added to the SQL Server for every 25,000 nodes?",
+    "options": [
+      "8 GB",
+      "16 GB",
+      "32 GB",
+      "64 GB"
+    ],
+    "answer": "16 GB",
+    "difficulty": "Easy",
+    "explanation": "Sizing considerations recommend adding 16 GB of RAM to SQL Server for every 25,000 nodes."
+  },
+  {
+    "id": "easy_03",
+    "question": "What does 'Vertical Scalability' refer to in the ePO environment?",
+    "options": [
+      "Adding more Agent Handlers",
+      "Adding more ePO servers",
+      "Upgrading to bigger, faster hardware",
+      "Moving to the cloud"
+    ],
+    "answer": "Upgrading to bigger, faster hardware",
+    "difficulty": "Easy",
+    "explanation": "Vertical scalability is defined as adding and upgrading to bigger, faster hardware to manage larger environments."
+  },
+  {
+    "id": "easy_04",
+    "question": "What is the recommendation for the number of Agent Handlers per managed systems?",
+    "options": [
+      "One Agent Handler for every 10,000 systems",
+      "One Agent Handler for every 25,000 systems",
+      "One Agent Handler for every 50,000 systems",
+      "One Agent Handler for every 100,000 systems"
+    ],
+    "answer": "One Agent Handler for every 50,000 systems",
+    "difficulty": "Easy",
+    "explanation": "The guide recommends one Agent Handler for every 50,000 systems."
+  },
+  {
+    "id": "easy_05",
+    "question": "Which installation workflow is used to provide high availability for server clusters?",
+    "options": [
+      "Cloud services installation",
+      "Single server installation",
+      "Cluster installation",
+      "Upgrade installation"
+    ],
+    "answer": "Cluster installation",
+    "difficulty": "Easy",
+    "explanation": "The Cluster installation workflow provides high availability for server clusters using Microsoft Cluster Server (MSCS)."
+  },
+  {
+    "id": "easy_06",
+    "question": "What is the recommended SQL storage sector size provided by Microsoft?",
+    "options": [
+      "4 KB",
+      "16 KB",
+      "32 KB",
+      "64 KB"
+    ],
+    "answer": "64 KB",
+    "difficulty": "Easy",
+    "explanation": "Microsoft recommends that SQL storage solutions are allocated with a 64-KB sector size."
+  },
+  {
+    "id": "easy_07",
+    "question": "Which component manages the horizontal scalability of the ePO environment?",
+    "options": [
+      "SQL Server",
+      "Agent Handlers",
+      "Tomcat",
+      "Apache"
+    ],
+    "answer": "Agent Handlers",
+    "difficulty": "Easy",
+    "explanation": "Horizontal scalability is accomplished by installing additional Agent Handlers."
+  },
+  {
+    "id": "easy_08",
+    "question": "What is the estimated event retention period used for sizing storage capacity?",
+    "options": [
+      "3 months",
+      "6 months",
+      "1 year",
+      "2 years"
+    ],
+    "answer": "6 months",
+    "difficulty": "Easy",
+    "explanation": "Storage capacity estimates are based on an event retention period of 6 months."
+  },
+  {
+    "id": "easy_09",
+    "question": "For an environment with 25,000\u201375,000 nodes, what is the recommended RAM for the ePO server?",
+    "options": [
+      "8\u201316 GB",
+      "16\u201332 GB",
+      "32\u201364 GB",
+      "64\u2013128 GB"
+    ],
+    "answer": "16\u201332 GB",
+    "difficulty": "Easy",
+    "explanation": "For 25,000\u201375,000 nodes, the recommended RAM for the ePO server is 16\u201332 GB."
+  },
+  {
+    "id": "easy_10",
+    "question": "What is the recommended SQL Server Performance (IOPS) for 75,000\u2013150,000 nodes?",
+    "options": [
+      ">10,000",
+      ">30,000",
+      ">50,000",
+      ">90,000"
+    ],
+    "answer": ">30,000",
+    "difficulty": "Easy",
+    "explanation": "For 75,000\u2013150,000 nodes, the recommended SQL Server Performance is >30,000 IOPS."
+  },
+  {
+    "id": "easy_11",
+    "question": "True or False: You can install ePO - On-prem on a 32-bit operating system.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "difficulty": "Easy",
+    "explanation": "You must use a 64-bit operating system for the ePO - On-prem server and SQL Server."
+  },
+  {
+    "id": "easy_12",
+    "question": "Which of the following is NOT a type of installation workflow listed in the guide?",
+    "options": [
+      "Single server",
+      "Cloud services",
+      "Cluster",
+      "Hybrid-Mesh"
+    ],
+    "answer": "Hybrid-Mesh",
+    "difficulty": "Easy",
+    "explanation": "The guide lists Single server, Cloud services, Cluster, and Upgrade workflows."
+  },
+  {
+    "id": "easy_13",
+    "question": "When estimating SQL storage, what is the 'AveSizeOfEvent' typically multiplied by?",
+    "options": [
+      "NumSystems",
+      "NumDaysToRetain",
+      "EventsPerDay",
+      "All of the above"
+    ],
+    "answer": "All of the above",
+    "difficulty": "Easy",
+    "explanation": "The formula involves NumSystems * EventsPerDay * AveSizeOfEvent * NumDaysToRetain."
+  },
+  {
+    "id": "easy_14",
+    "question": "For deployments greater than 75,000 systems, is it recommended to have the ePO server and SQL database on the same server?",
+    "options": [
+      "Yes",
+      "Conditional",
+      "Not recommended",
+      "It doesn't matter"
+    ],
+    "answer": "Not recommended",
+    "difficulty": "Easy",
+    "explanation": "For > 75,000 systems, having ePO and SQL on the same server is 'Not recommended'."
+  },
+  {
+    "id": "easy_15",
+    "question": "What is the primary limitation on the size of the environment ePO can manage?",
+    "options": [
+      "ePO Server CPU",
+      "Network bandwidth",
+      "SQL database performance",
+      "Number of administrators"
+    ],
+    "answer": "SQL database performance",
+    "difficulty": "Easy",
+    "explanation": "The primary limitation is the SQL database performance, specifically disk performance (IOPS)."
+  },
+  {
+    "id": "easy_16",
+    "question": "What does IOPS stand for?",
+    "options": [
+      "Integrated Operations Per Second",
+      "Input/Output Operations Per Second",
+      "Internal Optimizations Per System",
+      "Intel Open Processing Standard"
+    ],
+    "answer": "Input/Output Operations Per Second",
+    "difficulty": "Easy",
+    "explanation": "IOPS stands for Input/Output Operations Per Second."
+  },
+  {
+    "id": "easy_17",
+    "question": "How many CPU cores are recommended for an Agent Handler managing 10,000\u201325,000 systems?",
+    "options": [
+      "2",
+      "4",
+      "8",
+      "16"
+    ],
+    "answer": "4",
+    "difficulty": "Easy",
+    "explanation": "The recommended CPU cores for an Agent Handler in this range is 4."
+  },
+  {
+    "id": "easy_18",
+    "question": "Which port-related check is part of the 'Before you can install' checklist for Single Server?",
+    "options": [
+      "Ensure SQL Server is configured for UDP access",
+      "Ensure SQL Server is configured for TCP/IP access",
+      "Ensure Port 80 is blocked",
+      "Ensure Port 443 is open to the world"
+    ],
+    "answer": "Ensure SQL Server is configured for TCP/IP access",
+    "difficulty": "Easy",
+    "explanation": "You must ensure your SQL Server is configured for TCP/IP access."
+  },
+  {
+    "id": "easy_19",
+    "question": "What is the baseline calculation for 'NumEpoCores' (ePO Server Cores)?",
+    "options": [
+      "2 + (NumSystems / 5000)",
+      "4 + (NumSystems / 10,000)",
+      "8 + (NumSystems / 20,000)",
+      "16 + (NumSystems / 100,000)"
+    ],
+    "answer": "4 + (NumSystems / 10,000)",
+    "difficulty": "Easy",
+    "explanation": "NumEpoCores = 4 + (NumSystems / SystemsPerAddlCoreEPOServer), where SystemsPerAddlCoreEPOServer is 10,000."
+  },
+  {
+    "id": "easy_20",
+    "question": "Which cloud platform is explicitly mentioned as a supported server installation option?",
+    "options": [
+      "IBM Cloud",
+      "Oracle Cloud",
+      "Amazon Web Services (AWS)",
+      "Alibaba Cloud"
+    ],
+    "answer": "Amazon Web Services (AWS)",
+    "difficulty": "Easy",
+    "explanation": "AWS (Amazon Web Services) and Azure are mentioned. AWS is a correct option here."
+  },
+  {
+    "id": "easy_21",
+    "question": "What is the recommended storage size for an ePO server managing < 10,000 nodes?",
+    "options": [
+      "100 GB",
+      "300 GB",
+      "500 GB",
+      "1 TB"
+    ],
+    "answer": "300 GB",
+    "difficulty": "Easy",
+    "explanation": "For < 10,000 nodes, the recommended storage is 300 GB."
+  },
+  {
+    "id": "easy_22",
+    "question": "Does ePO support virtual infrastructure software?",
+    "options": [
+      "Yes",
+      "No",
+      "Only for SQL Server",
+      "Only for Agent Handlers"
+    ],
+    "answer": "Yes",
+    "difficulty": "Easy",
+    "explanation": "The guide includes a section on 'Supported virtual infrastructure software', indicating support."
+  },
+  {
+    "id": "easy_23",
+    "question": "To manage more systems, can you add distributed repositories?",
+    "options": [
+      "Yes",
+      "No, only Agent Handlers",
+      "No, only SQL Cores",
+      "No"
+    ],
+    "answer": "Yes",
+    "difficulty": "Easy",
+    "explanation": "You can scale the SQL database, add distributed repositories, and add Agent Handlers."
+  },
+  {
+    "id": "easy_24",
+    "question": "What tool checks for compliance issues before installation?",
+    "options": [
+      "ePO Post-Installation Auditor",
+      "ePO Pre-Installation Auditor",
+      "Trellix Compliance Checker",
+      "SQL Server Validator"
+    ],
+    "answer": "ePO Pre-Installation Auditor",
+    "difficulty": "Easy",
+    "explanation": "The ePO - On-prem Pre-Installation Auditor checks for compliance issues."
+  },
+  {
+    "id": "easy_25",
+    "question": "For > 75,000 systems, are distributed repositories required?",
+    "options": [
+      "Not required",
+      "Conditional",
+      "Yes",
+      "Only if using Cloud"
+    ],
+    "answer": "Yes",
+    "difficulty": "Easy",
+    "explanation": "For > 75,000 systems, the column for 'Add distributed repositories' says 'Yes'."
+  },
+  {
+    "id": "normal_01",
+    "question": "What Windows feature should be turned off before beginning the installation or upgrade of ePO software?",
+    "options": [
+      "Windows Firewall",
+      "Windows Defender",
+      "Windows Updates",
+      "User Account Control"
+    ],
+    "answer": "Windows Updates",
+    "difficulty": "Normal",
+    "explanation": "The guide states: 'Turn off Windows updates before you begin installing or upgrading your software.'"
+  },
+  {
+    "id": "normal_02",
+    "question": "Which of the following Microsoft Visual C++ Redistributable packages is NOT explicitly listed as required and automatically installed?",
+    "options": [
+      "2010",
+      "2013",
+      "2015",
+      "2019"
+    ],
+    "answer": "2019",
+    "difficulty": "Normal",
+    "explanation": "The guide lists 2010, 2013, and 2015 as required and installed automatically."
+  },
+  {
+    "id": "normal_03",
+    "question": "What is the recommended maximum number of clients per DXL Broker?",
+    "options": [
+      "10,000",
+      "25,000",
+      "50,000",
+      "100,000"
+    ],
+    "answer": "50,000",
+    "difficulty": "Normal",
+    "explanation": "We recommend a maximum of 50,000 clients per DXL Broker."
+  },
+  {
+    "id": "normal_04",
+    "question": "When using Amazon RDS for SQL Server, what must the Backup Retention Period be set to during ePO installation?",
+    "options": [
+      "0 days",
+      "1 day",
+      "7 days",
+      "30 days"
+    ],
+    "answer": "0 days",
+    "difficulty": "Normal",
+    "explanation": "For Backup Retention Period, select 0 days during installation."
+  },
+  {
+    "id": "normal_05",
+    "question": "Which SQL Server option must be enabled for ePO - On-prem?",
+    "options": [
+      "Nested triggers",
+      "Recursive triggers",
+      "CLR Integration",
+      "xp_cmdshell"
+    ],
+    "answer": "Nested triggers",
+    "difficulty": "Normal",
+    "explanation": "The SQL Server Nested Triggers option must be enabled."
+  },
+  {
+    "id": "normal_06",
+    "question": "What is the required Collation property for the SQL database?",
+    "options": [
+      "Case Insensitivity (CI)",
+      "Case Sensitivity (CS)",
+      "Binary Sort",
+      "Dictionary Order"
+    ],
+    "answer": "Case Insensitivity (CI)",
+    "difficulty": "Normal",
+    "explanation": "ePO supports collations using Case Insensitivity (CI)."
+  },
+  {
+    "id": "normal_07",
+    "question": "For a 'Combined Services' environment with < 10,000 nodes, what are the specs for ePO + DXL Broker + SQL on one server?",
+    "options": [
+      "4 cores, 8 GB RAM",
+      "8 cores, 16 GB RAM",
+      "10 cores, 24 GB RAM",
+      "16 cores, 32 GB RAM"
+    ],
+    "answer": "10 cores, 24 GB RAM",
+    "difficulty": "Normal",
+    "explanation": "For < 10,000 nodes, combining ePO + DXL + SQL requires 10 cores and 24-GB RAM."
+  },
+  {
+    "id": "normal_08",
+    "question": "Is it recommended to combine ePO - On-prem and DXL Broker on the same server for 25,000\u201375,000 nodes?",
+    "options": [
+      "Yes",
+      "No / Not recommended",
+      "Yes, with 32GB RAM",
+      "Only on Linux"
+    ],
+    "answer": "No / Not recommended",
+    "difficulty": "Normal",
+    "explanation": "For 25,000\u201375,000 nodes, combining ePO + DXL Broker is marked as 'Not recommended'."
+  },
+  {
+    "id": "normal_09",
+    "question": "How are IPv6 addresses displayed in the ePO interface to distinguish them?",
+    "options": [
+      "Enclosed in braces {}",
+      "Enclosed in brackets []",
+      "Prefixed with ipv6:",
+      "Italicized"
+    ],
+    "answer": "Enclosed in brackets []",
+    "difficulty": "Normal",
+    "explanation": "IPv6-related properties are displayed in the expanded form and are enclosed in brackets."
+  },
+  {
+    "id": "normal_10",
+    "question": "What is the fixed database load for 'Work queue checks' per Agent Handler?",
+    "options": [
+      "Every second",
+      "Every 10 seconds",
+      "Every minute",
+      "Every 5 minutes"
+    ],
+    "answer": "Every 10 seconds",
+    "difficulty": "Normal",
+    "explanation": "Each Agent Handler performs Work queue checks every 10 seconds."
+  },
+  {
+    "id": "normal_11",
+    "question": "How many database connections per CPU are held open to the Apache service by an Agent Handler?",
+    "options": [
+      "One",
+      "Two",
+      "Four",
+      "Eight"
+    ],
+    "answer": "Four",
+    "difficulty": "Normal",
+    "explanation": "Four connections per CPU to the Apache service are held open."
+  },
+  {
+    "id": "normal_12",
+    "question": "What is the recommended disk space for a Windows-based DXL Broker (Recommended specs)?",
+    "options": [
+      "10 GB",
+      "20 GB",
+      "50 GB",
+      "100 GB"
+    ],
+    "answer": "20 GB",
+    "difficulty": "Normal",
+    "explanation": "For Windows, recommended disk space is 20 GB."
+  },
+  {
+    "id": "normal_13",
+    "question": "When configuring updates, what strategy helps reduce load on distributed repositories?",
+    "options": [
+      "Synchronize all updates",
+      "Randomize update times",
+      "Update only on weekends",
+      "Disable P2P"
+    ],
+    "answer": "Randomize update times",
+    "difficulty": "Normal",
+    "explanation": "Tip: When configuring updates, randomize update times across endpoints."
+  },
+  {
+    "id": "normal_14",
+    "question": "By what factor can Peer-to-peer enabled agents increase distributed repository system capability?",
+    "options": [
+      "2\u20135X",
+      "10\u2013100X",
+      "500X",
+      "It does not increase capability"
+    ],
+    "answer": "10\u2013100X",
+    "difficulty": "Normal",
+    "explanation": "Peer-to-peer enabled agents can increase distributed repository system capability by 10\u2013100X."
+  },
+  {
+    "id": "normal_15",
+    "question": "For 'mixed mode' network configuration, which IP versions does ePO support?",
+    "options": [
+      "IPv4 only",
+      "IPv6 only",
+      "IPv4 and IPv6",
+      "IPX/SPX"
+    ],
+    "answer": "IPv4 and IPv6",
+    "difficulty": "Normal",
+    "explanation": "Mixed mode \u2014 Supports IPv4 and IPv6 address formats."
+  },
+  {
+    "id": "normal_16",
+    "question": "If your network uses only IPv4, what mode will the ePO server work in?",
+    "options": [
+      "Mixed mode",
+      "Only IPv4",
+      "Legacy mode",
+      "Compatibility mode"
+    ],
+    "answer": "Only IPv4",
+    "difficulty": "Normal",
+    "explanation": "If your network is configured to use only IPv4 addresses, your server works in Only IPv4 mode."
+  },
+  {
+    "id": "normal_17",
+    "question": "What is the recommended RAM for a standalone Linux DXL Broker?",
+    "options": [
+      "4 GB",
+      "8 GB",
+      "16 GB",
+      "32 GB"
+    ],
+    "answer": "8 GB",
+    "difficulty": "Normal",
+    "explanation": "Recommended memory for Linux DXL Broker is 8 GB."
+  },
+  {
+    "id": "normal_18",
+    "question": "Which protocol is disabled by default for communication to external servers like SQL?",
+    "options": [
+      "TLS 1.0",
+      "TLS 1.1",
+      "TLS 1.2",
+      "SSL 3.0"
+    ],
+    "answer": "TLS 1.0",
+    "difficulty": "Normal",
+    "explanation": "TLS 1.0 is disabled by default for communication to external servers."
+  },
+  {
+    "id": "normal_19",
+    "question": "For endpoints in branch offices (< 1000), what is the preferred repository strategy?",
+    "options": [
+      "Local Distributed Repository",
+      "SuperAgent distributed repository or no repository (using P2P)",
+      "Dedicated Agent Handler",
+      "Offline updates"
+    ],
+    "answer": "SuperAgent distributed repository or no repository (using P2P)",
+    "difficulty": "Normal",
+    "explanation": "Choose a single SuperAgent distributed repository or no repository at all (preferred) with peer-to-peer enabled."
+  },
+  {
+    "id": "normal_20",
+    "question": "What credential type is required for Windows authentication to SQL Server?",
+    "options": [
+      "Domain User",
+      "Domain Admin",
+      "Domain credentials with Database Owner (dbo) rights",
+      "Local Admin"
+    ],
+    "answer": "Domain credentials with Database Owner (dbo) rights",
+    "difficulty": "Normal",
+    "explanation": "Windows authentication credentials \u2014 Domain credentials that have Database Owner (dbo) rights."
+  },
+  {
+    "id": "normal_21",
+    "question": "What must be done to the ePO public DNS name after installing on a cloud server?",
+    "options": [
+      "It updates automatically",
+      "Update it with the elastic IP address or DNS",
+      "Remove it",
+      "Change it to 'localhost'"
+    ],
+    "answer": "Update it with the elastic IP address or DNS",
+    "difficulty": "Normal",
+    "explanation": "Update Trellix ePO Server Public DNS in Server Settings with elastic IP address or DNS."
+  },
+  {
+    "id": "normal_22",
+    "question": "Which operating system is listed as supported for evaluation but not for production support?",
+    "options": [
+      "Windows Server 2019",
+      "Windows 10 (x64)",
+      "Windows Server 2012",
+      "Windows Server 2016"
+    ],
+    "answer": "Windows 10 (x64)",
+    "difficulty": "Normal",
+    "explanation": "Windows 10 (x64 only) is listed under Operating systems for evaluation."
+  },
+  {
+    "id": "normal_23",
+    "question": "When setting a Literal IPv6 address for a UNC source, which format must be used?",
+    "options": [
+      "Standard IPv6 format",
+      "Microsoft Literal IPv6 format",
+      "Dot-decimal notation",
+      "Base64 encoded"
+    ],
+    "answer": "Microsoft Literal IPv6 format",
+    "difficulty": "Normal",
+    "explanation": "When setting a Literal IPv6 address for a UNC source, you must use the Microsoft Literal IPv6 format."
+  },
+  {
+    "id": "normal_24",
+    "question": "Is 'MSXML 3.0 and 6.0' required for ePO installation?",
+    "options": [
+      "Yes",
+      "No",
+      "Recommended",
+      "Only for SQL"
+    ],
+    "answer": "Yes",
+    "difficulty": "Normal",
+    "explanation": "MSXML 3.0 and 6.0: Required \u2014 Installed automatically."
+  },
+  {
+    "id": "normal_25",
+    "question": "What is the minimum network interface speed required?",
+    "options": [
+      "10 megabit",
+      "100 megabit",
+      "1 gigabit",
+      "10 gigabit"
+    ],
+    "answer": "100 megabit",
+    "difficulty": "Normal",
+    "explanation": "Network Interface Card (NIC): 100 megabit minimum."
+  },
+  {
+    "id": "hard_01",
+    "question": "Which of the following ports can be changed AFTER ePO installation is complete?",
+    "options": [
+      "Agent-server communication port (80)",
+      "Agent-server communication secure port (443)",
+      "Console-to-application server communication port (8443)",
+      "Agent wake-up communication port (8081)"
+    ],
+    "answer": "Agent wake-up communication port (8081)",
+    "difficulty": "Hard",
+    "explanation": "According to the port table and notes, only Agent wake-up and Agent broadcast ports can be changed after installation."
+  },
+  {
+    "id": "hard_02",
+    "question": "Which SQL Server role is required for the ePO installation account during the initial installation but can be revoked afterwards?",
+    "options": [
+      "sysadmin",
+      "db_owner",
+      "dbcreator",
+      "public"
+    ],
+    "answer": "dbcreator",
+    "difficulty": "Hard",
+    "explanation": "The dbcreator server role is required during installation but can be removed after the database is created."
+  },
+  {
+    "id": "hard_03",
+    "question": "Which character is strictly forbidden in SQL database user names?",
+    "options": [
+      "Underscore (_)",
+      "Hyphen (-)",
+      "Colon (:)",
+      "Period (.)"
+    ],
+    "answer": "Colon (:)",
+    "difficulty": "Hard",
+    "explanation": "Colons (:) and Semicolons (;) in user names are unsupported."
+  },
+  {
+    "id": "hard_04",
+    "question": "What is the specific format of the ePO Events database name created during installation?",
+    "options": [
+      "ePO_Events_<ServerName>",
+      "ePO_<ServerName>_Events",
+      "Trellix_ePO_<ServerName>_Events",
+      "<ServerName>_ePO_Events"
+    ],
+    "answer": "ePO_<ServerName>_Events",
+    "difficulty": "Hard",
+    "explanation": "The new SQL database is created in the format: ePO_<ePOServerName>_Events."
+  },
+  {
+    "id": "hard_05",
+    "question": "What is the minimum character length for the server recovery passphrase?",
+    "options": [
+      "8 characters",
+      "10 characters",
+      "14 characters",
+      "20 characters"
+    ],
+    "answer": "14 characters",
+    "difficulty": "Hard",
+    "explanation": "The passphrase must be of 14\u2013200 characters."
+  },
+  {
+    "id": "hard_06",
+    "question": "When configuring 'Full Recovery Model' for the ePO Events database, what administrative task becomes mandatory to prevent disk space exhaustion?",
+    "options": [
+      "Periodic shrinking of the database",
+      "Periodic backups of the Transaction log",
+      "Periodic re-indexing",
+      "Periodic restart of SQL Server"
+    ],
+    "answer": "Periodic backups of the Transaction log",
+    "difficulty": "Hard",
+    "explanation": "Full Recovery Model includes the administrative overhead of periodically backing up the Transaction log."
+  },
+  {
+    "id": "hard_07",
+    "question": "If you are using dynamic ports for SQL Server, what service must be running on the SQL Server?",
+    "options": [
+      "SQL Server Agent",
+      "SQL Server Browser",
+      "SQL Server Reporting Services",
+      "SQL Server Integration Services"
+    ],
+    "answer": "SQL Server Browser",
+    "difficulty": "Hard",
+    "explanation": "If you are using dynamic ports, the SQL Browser service must be running on the SQL Server."
+  },
+  {
+    "id": "hard_08",
+    "question": "Which TLS version is now supported by the ePO - On-prem console (as of 5.10.0)?",
+    "options": [
+      "TLS 1.0",
+      "TLS 1.1",
+      "TLS 1.2 only",
+      "TLS 1.3"
+    ],
+    "answer": "TLS 1.3",
+    "difficulty": "Hard",
+    "explanation": "ePO - On-prem console now supports TLS 1.3."
+  },
+  {
+    "id": "hard_09",
+    "question": "What happens if you run Setup.exe without first extracting the contents of the installation .zip file?",
+    "options": [
+      "It prompts to extract files",
+      "It runs in read-only mode",
+      "The installation fails",
+      "It installs only the core components"
+    ],
+    "answer": "The installation fails",
+    "difficulty": "Hard",
+    "explanation": "Caution: If you run Setup.exe without first extracting the contents of the .zip file, the installation fails."
+  },
+  {
+    "id": "hard_10",
+    "question": "Which SQL restoration requirement must be met if you intend to restore ePO from a database snapshot?",
+    "options": [
+      "The server name must be different",
+      "You must have the server recovery passphrase used with the snapshot",
+      "The database must be in Simple Recovery Model",
+      "The IP address must change"
+    ],
+    "answer": "You must have the server recovery passphrase used with the snapshot",
+    "difficulty": "Hard",
+    "explanation": "You must Know the server recovery passphrase used with your Disaster Recovery Snapshot records."
+  },
+  {
+    "id": "hard_11",
+    "question": "What is the default port for Client-to-server authenticated communication?",
+    "options": [
+      "8081",
+      "8082",
+      "8443",
+      "8444"
+    ],
+    "answer": "8444",
+    "difficulty": "Hard",
+    "explanation": "Client-to-server authenticated communication port default is 8444."
+  },
+  {
+    "id": "hard_12",
+    "question": "What is the maximum character length for the server recovery passphrase?",
+    "options": [
+      "100",
+      "128",
+      "200",
+      "256"
+    ],
+    "answer": "200",
+    "difficulty": "Hard",
+    "explanation": "The passphrase must be of 14\u2013200 characters."
+  },
+  {
+    "id": "hard_13",
+    "question": "Why is the Simple Recovery Model considered acceptable for most enterprise customers?",
+    "options": [
+      "It is faster",
+      "It requires no backups",
+      "Data lost in a disaster is usually just event data since last full backup",
+      "It supports larger databases"
+    ],
+    "answer": "Data lost in a disaster is usually just event data since last full backup",
+    "difficulty": "Hard",
+    "explanation": "Because the data lost in a disaster is usually event data since the last full backup."
+  },
+  {
+    "id": "hard_14",
+    "question": "If the TCP Dynamic Ports field is blank in SQL Configuration Manager, what does this indicate?",
+    "options": [
+      "TCP/IP is disabled",
+      "The SQL Server is using a static port",
+      "The SQL Browser service is stopped",
+      "The firewall is blocking ports"
+    ],
+    "answer": "The SQL Server is using a static port",
+    "difficulty": "Hard",
+    "explanation": "If the value for TCP Dynamic Ports is blank, then your SQL Server is using a static port."
+  },
+  {
+    "id": "hard_15",
+    "question": "Which service connection consumes 'two connections per CPU' on the database?",
+    "options": [
+      "Apache service",
+      "Event Parser service",
+      "Tomcat service",
+      "Agent Handler service"
+    ],
+    "answer": "Event Parser service",
+    "difficulty": "Hard",
+    "explanation": "Two connections per CPU to the Event Parser service."
+  },
+  {
+    "id": "hard_16",
+    "question": "Which browser is explicitly NOT supported for ePO - On-prem 5.10.0?",
+    "options": [
+      "Firefox",
+      "Chrome",
+      "Microsoft Edge",
+      "Internet Explorer"
+    ],
+    "answer": "Internet Explorer",
+    "difficulty": "Hard",
+    "explanation": "Internet Explorer is no longer supported in ePO - On-prem 5.10.0 SP1 and later."
+  },
+  {
+    "id": "hard_17",
+    "question": "When entering SQL details manually, what syntax is used to specify a named instance?",
+    "options": [
+      "ServerName:InstanceName",
+      "ServerName/InstanceName",
+      "ServerName\\InstanceName",
+      "ServerName.InstanceName"
+    ],
+    "answer": "ServerName\\InstanceName",
+    "difficulty": "Hard",
+    "explanation": "Enter the name of the SQL Server and the name of the SQL instance separated by a backslash (e.g., SQLServer\\MSSQLSERVER)."
+  },
+  {
+    "id": "hard_18",
+    "question": "Which character is forbidden in a SQL password?",
+    "options": [
+      "Exclamation mark (!)",
+      "Single quote (')",
+      "At sign (@)",
+      "Pound sign (#)"
+    ],
+    "answer": "Single quote (')",
+    "difficulty": "Hard",
+    "explanation": "Single quotes ( ' ) and Double quotes ( \" ) are listed as unsupported password characters."
+  },
+  {
+    "id": "hard_19",
+    "question": "If you select 'Enable Automatic Product Installation', when does the process actually start?",
+    "options": [
+      "Immediately upon selection",
+      "During the file extraction phase",
+      "When you complete installing ePO and before you log on",
+      "After the first reboot"
+    ],
+    "answer": "When you complete installing ePO and before you log on",
+    "difficulty": "Hard",
+    "explanation": "It starts running when you complete installing ePO - On-prem and is finished before you log on."
+  },
+  {
+    "id": "hard_20",
+    "question": "What permission does the 'db_owner' role grant to the ePO SQL user account?",
+    "options": [
+      "Full administrative access to the SQL Server",
+      "Ability to create new databases",
+      "Full control over the ePO database",
+      "Read-only access to all databases"
+    ],
+    "answer": "Full control over the ePO database",
+    "difficulty": "Hard",
+    "explanation": "This ePO - On-prem SQL user account is granted the database role permission db_owner for the ePO - On-prem database."
+  },
+  {
+    "id": "hard_21",
+    "question": "If you stop the Automatic Product Installation, how must you subsequently install products?",
+    "options": [
+      "By restarting the Setup wizard",
+      "Using the Software Catalog or manually in Main Repository",
+      "By running the P2P updater",
+      "It is not possible to install them later"
+    ],
+    "answer": "Using the Software Catalog or manually in Main Repository",
+    "difficulty": "Hard",
+    "explanation": "You must use the Software Catalog to install your products, or manually install them in the Main Repository."
+  },
+  {
+    "id": "hard_22",
+    "question": "Which of the following creates a certificate warning when accessing the ePO web console?",
+    "options": [
+      "Using a self-signed certificate",
+      "Using a CA-signed certificate",
+      "Using TLS 1.2",
+      "Using localhost"
+    ],
+    "answer": "Using a self-signed certificate",
+    "difficulty": "Hard",
+    "explanation": "A certificate warning appears if you are using a self-signed certificate."
+  },
+  {
+    "id": "hard_23",
+    "question": "For a 'mixed mode' IPv4/IPv6 configuration, what format is used for UNC source Literal IPv6 addresses?",
+    "options": [
+      "Standard",
+      "Microsoft Literal",
+      "Canonical",
+      "Compressed"
+    ],
+    "answer": "Microsoft Literal",
+    "difficulty": "Hard",
+    "explanation": "When setting a Literal IPv6 address for a UNC source, you must use the Microsoft Literal IPv6 format."
+  },
+  {
+    "id": "hard_24",
+    "question": "What is the recommended RAM for an ePO server managing 150,000+ nodes?",
+    "options": [
+      "16\u201332 GB",
+      "16\u201364 GB",
+      "64\u2013128 GB",
+      "128 GB+"
+    ],
+    "answer": "16\u201364 GB",
+    "difficulty": "Hard",
+    "explanation": "For 150,000+ nodes, the recommended RAM is 16\u201364 GB (same as 75k-150k bracket)."
+  },
+  {
+    "id": "hard_25",
+    "question": "Which port is used for Agent broadcast communication?",
+    "options": [
+      "8081",
+      "8082",
+      "8443",
+      "8444"
+    ],
+    "answer": "8082",
+    "difficulty": "Hard",
+    "explanation": "Agent broadcast communication port: 8082."
+  },
+  {
+    "id": "expert_01",
+    "question": "What specific SQL query must be run on the ePO database after updating the Public DNS name in an Azure/GCP environment to enable secured port 443?",
+    "options": [
+      "update [EPOServerInfo] set SecureHttpPort='443'",
+      "update [EPOServerInfo] set RmdSecureHttpPort='443'",
+      "update [OrionServerProperties] set Port='443'",
+      "update [EPOConfig] set SecurePort='443'"
+    ],
+    "answer": "update [EPOServerInfo] set RmdSecureHttpPort='443'",
+    "difficulty": "Expert",
+    "explanation": "The guide specifies: update [EPOServerInfo] set RmdSecureHttpPort='443' ... to enable the secured port 443 for ePO - On-prem DNS."
+  },
+  {
+    "id": "expert_02",
+    "question": "Which specific functionality will NOT work in an Azure environment if the ePO server cannot communicate with agents in a private network (without VPN/DXL)?",
+    "options": [
+      "Policy Assignment",
+      "Push agent",
+      "Event Parsing",
+      "Dashboard Refresh"
+    ],
+    "answer": "Push agent",
+    "difficulty": "Expert",
+    "explanation": "Limitations section states: 'Push agent doesn't work \u2014 Use a VPN to overcome this limitation.'"
+  },
+  {
+    "id": "expert_03",
+    "question": "Which port must be configured in the inbound security group for a CSR Report Server in the cloud?",
+    "options": [
+      "Port 80",
+      "Port 443",
+      "Port 9111, 9112, 9121, 9129",
+      "Port 8081, 8082"
+    ],
+    "answer": "Port 9111, 9112, 9121, 9129",
+    "difficulty": "Expert",
+    "explanation": "Configure port 9111, 9112, 9121 and 9129 in CSR report server inbound security group."
+  },
+  {
+    "id": "expert_04",
+    "question": "What is the recommended maximum number of clients per DXL Broker?",
+    "options": [
+      "10,000",
+      "25,000",
+      "50,000",
+      "100,000"
+    ],
+    "answer": "50,000",
+    "difficulty": "Expert",
+    "explanation": "We recommend a maximum of 50,000 clients per DXL Broker."
+  },
+  {
+    "id": "expert_05",
+    "question": "For a Syslog Server in the cloud, which port must be configured in the ePO outbound security group?",
+    "options": [
+      "514",
+      "1514",
+      "6514",
+      "8514"
+    ],
+    "answer": "6514",
+    "difficulty": "Expert",
+    "explanation": "Configure port 6514 in the ePO - On-prem server outbound security group."
+  },
+  {
+    "id": "expert_06",
+    "question": "When configuring an AWS EC2 instance, what key pair private key file format is required?",
+    "options": [
+      ".ppk",
+      ".pem",
+      ".cer",
+      ".key"
+    ],
+    "answer": ".pem",
+    "difficulty": "Expert",
+    "explanation": "Select the Private key file format as .pem."
+  },
+  {
+    "id": "expert_07",
+    "question": "Installing ePO on AWS requires a minimum of how much storage?",
+    "options": [
+      "10-15 GB",
+      "20-30 GB",
+      "50-60 GB",
+      "100+ GB"
+    ],
+    "answer": "20-30 GB",
+    "difficulty": "Expert",
+    "explanation": "20-30 GB is the minimum storage required to install ePO."
+  },
+  {
+    "id": "expert_08",
+    "question": "Which Trellix Agent versions are explicitly noted as NOT supporting port 80?",
+    "options": [
+      "Agent 4.0 and later",
+      "Agent 4.8 and later",
+      "Agent 5.x and later",
+      "Agent 6.x and later"
+    ],
+    "answer": "Agent 5.x and later",
+    "difficulty": "Expert",
+    "explanation": "Trellix Agent 5.x and later does not support port 80."
+  },
+  {
+    "id": "expert_09",
+    "question": "When using a 'Universal Naming Convention (UNC)' distributed repository, which protocol port must be opened?",
+    "options": [
+      "SMB Port 445",
+      "NFS Port 2049",
+      "FTP Port 21",
+      "HTTP Port 80"
+    ],
+    "answer": "NFS Port 2049",
+    "difficulty": "Expert",
+    "explanation": "Open NFS port 2049 in the ePO - On-prem server and in the Repository server."
+  },
+  {
+    "id": "expert_10",
+    "question": "If 'Wake up agent using Agent Handler' fails in a private cloud network, what is the suggested workaround besides VPN?",
+    "options": [
+      "Configure NAT",
+      "Configure DXL",
+      "Use a Relay Server",
+      "Increase Timeout"
+    ],
+    "answer": "Configure DXL",
+    "difficulty": "Expert",
+    "explanation": "Use a VPN or configure DXL to overcome this limitation."
+  },
+  {
+    "id": "expert_11",
+    "question": "For a 'Distributed Server' in the cloud, which OUTBOUND port needs to be configured on the ePO server?",
+    "options": [
+      "1433",
+      "2049",
+      "8081",
+      "8443"
+    ],
+    "answer": "2049",
+    "difficulty": "Expert",
+    "explanation": "Configure port 2049 in the ePO - On-prem server outbound security group."
+  },
+  {
+    "id": "expert_12",
+    "question": "What is the default SQL Server name format when installing ePO on an Azure server?",
+    "options": [
+      "<AzureServerName>\\EPOSERVER",
+      "<AzureServerName>\\SQLEXPRESS",
+      "<AzureServerName>\\MSSQLSERVER",
+      "Localhost\\EPOSERVER"
+    ],
+    "answer": "<AzureServerName>\\EPOSERVER",
+    "difficulty": "Expert",
+    "explanation": "By default, the ePO - On-prem SQL Server name is <AzureServerName>\\EPOSERVER."
+  },
+  {
+    "id": "expert_13",
+    "question": "When creating an AWS Key Pair for ePO, what type should be selected?",
+    "options": [
+      "DSA",
+      "RSA",
+      "ECDSA",
+      "ED25519"
+    ],
+    "answer": "RSA",
+    "difficulty": "Expert",
+    "explanation": "Select the key pair type as RSA."
+  },
+  {
+    "id": "expert_14",
+    "question": "Which additional column setting in 'Agent Handlers' actions must be manually toggled after creating a virtual Agent Handler group?",
+    "options": [
+      "Activate",
+      "Enable",
+      "Deploy",
+      "Link"
+    ],
+    "answer": "Enable",
+    "difficulty": "Expert",
+    "explanation": "In Agent Handlers \u2192 Handler groups... Enable it it in the Actions column. Agent Handlers are disabled by default."
+  },
+  {
+    "id": "expert_15",
+    "question": "For an AWS deployment, which Load Balancer type is referenced for Agent Handlers?",
+    "options": [
+      "Application Load Balancer",
+      "Network Load Balancer",
+      "Classic Load Balancer",
+      "Elastic Load Balancer (ELB)"
+    ],
+    "answer": "Elastic Load Balancer (ELB)",
+    "difficulty": "Expert",
+    "explanation": "Use an Elastic Load Balancer (ELB) with your Agent Handler to distribute the traffic."
+  },
+  {
+    "id": "expert_16",
+    "question": "What specific SQL parameter needs to be set for the AgentDeploymentURLServer in the [EPOServerInfo] table update query for AWS endpoints?",
+    "options": [
+      "<App Server IP>",
+      "<App Server DNS Name>",
+      "<Load Balancer DNS>",
+      "<VPC ID>"
+    ],
+    "answer": "<App Server DNS Name>",
+    "difficulty": "Expert",
+    "explanation": "AgentDeploymentURLServer = '<App Server DNS Name>'."
+  },
+  {
+    "id": "expert_17",
+    "question": "Which combination of servers is 'Not recommended' for environments with 10,000\u201325,000 nodes?",
+    "options": [
+      "Agent Handler + DXL Broker",
+      "ePO - On-prem + DXL Broker",
+      "SuperAgent + DXL Broker",
+      "SQL + DXL Broker"
+    ],
+    "answer": "ePO - On-prem + DXL Broker",
+    "difficulty": "Expert",
+    "explanation": "10,000\u201325,000 ePO - On-prem + DXL Broker: Not recommended."
+  },
+  {
+    "id": "expert_18",
+    "question": "In a cluster environment, if you combine DXL with a SuperAgent, what is the limitation mentioned?",
+    "options": [
+      "It requires double the RAM",
+      "It lowers the total number of systems that can be served",
+      "It requires a 10Gbps NIC",
+      "It is not supported"
+    ],
+    "answer": "It lowers the total number of systems that can be served",
+    "difficulty": "Expert",
+    "explanation": "Combining DXL and repository resources... lowers the total number of systems that can be served."
+  },
+  {
+    "id": "expert_19",
+    "question": "For AWS installation, what must be created before launching the EC2 instance (Network Settings)?",
+    "options": [
+      "VPN Gateway",
+      "Virtual Private Cloud (VPC)",
+      "Direct Connect",
+      "Transit Gateway"
+    ],
+    "answer": "Virtual Private Cloud (VPC)",
+    "difficulty": "Expert",
+    "explanation": "Create a Virtual Private Cloud... Select the desired VPC... then create an EC2 instance."
+  },
+  {
+    "id": "expert_20",
+    "question": "Which protocol versions must the SQL Server support for communication in an AWS environment (per KB91823 reference)?",
+    "options": [
+      "SSLv3",
+      "TLSv1.0 or TLSv1.1",
+      "TLSv1.1 or TLSv1.2",
+      "TLSv1.3 only"
+    ],
+    "answer": "TLSv1.1 or TLSv1.2",
+    "difficulty": "Expert",
+    "explanation": "Make sure the Trellix ePO server machine and SQL server machine supports communication over TLSv1.1 or TLSv1.2."
+  },
+  {
+    "id": "expert_21",
+    "question": "For 'Distributed repositories such as SuperAgent, FTP, HTTP, and UNC' to work in Azure, what condition must be met regarding private networks?",
+    "options": [
+      "They must be on the same subnet",
+      "The ePO server must be able to communicate with remote servers",
+      "They must use IPv6",
+      "They must be installed on Linux"
+    ],
+    "answer": "The ePO server must be able to communicate with remote servers",
+    "difficulty": "Expert",
+    "explanation": "If the ePO - On-prem server... can't communicate with remote servers in private networks, then these features don't work."
+  },
+  {
+    "id": "expert_22",
+    "question": "What is the recommended RAM for a combined 'ePO - On-prem + DXL Broker' server managing < 10,000 nodes?",
+    "options": [
+      "8 GB",
+      "16 GB",
+      "24 GB",
+      "32 GB"
+    ],
+    "answer": "16 GB",
+    "difficulty": "Expert",
+    "explanation": "< 10,000 ePO - On-prem + DXL Broker: 16-GB RAM."
+  },
+  {
+    "id": "expert_23",
+    "question": "If you use a 'Bastion Host' in AWS, what technology is commonly used to connect to the internal servers?",
+    "options": [
+      "SSH Tunneling",
+      "Remote Desktop Gateway",
+      "Site-to-Site VPN",
+      "Direct Connect"
+    ],
+    "answer": "Remote Desktop Gateway",
+    "difficulty": "Expert",
+    "explanation": "Create a Bastion Host / Jump server using remote desktop gateway."
+  },
+  {
+    "id": "expert_24",
+    "question": "When connecting to an AWS EC2 Windows instance, what is required to retrieve the Initial Administrator Password?",
+    "options": [
+      "The Instance ID",
+      "The RSA Private Key (.pem file)",
+      "The Root User credentials",
+      "The MFA Token"
+    ],
+    "answer": "The RSA Private Key (.pem file)",
+    "difficulty": "Expert",
+    "explanation": "Click Upload private key file and upload the .pem file... Click Decrypt Password."
+  },
+  {
+    "id": "expert_25",
+    "question": "In a combined 'ePO + DXL + SQL' server for < 10,000 nodes, what is the disk requirement?",
+    "options": [
+      "500 GB",
+      "1.0 TB",
+      "1.5 TB",
+      "2.0 TB"
+    ],
+    "answer": "1.5 TB",
+    "difficulty": "Expert",
+    "explanation": "< 10,000 ePO - On-prem + DXL Broker + SQL: 1.5-TB disk."
+  },
+  {
+    "id": "expert_26",
+    "question": "For GCP, which port must be configured in the inbound security group for a Syslog Server?",
+    "options": [
+      "514",
+      "6514",
+      "1468",
+      "443"
+    ],
+    "answer": "6514",
+    "difficulty": "Expert",
+    "explanation": "Configure port 6514 in Syslog server inbound security group."
+  }
+]

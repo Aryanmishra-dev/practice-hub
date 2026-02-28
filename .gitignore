@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Environment variables (NEVER commit these)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+backend/.env
+frontend/.env.local
+
+# Next.js
+.next/
+out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+*.so
+.Python
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Testing
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# Docker
+docker-compose.override.yml
+
+# Misc
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

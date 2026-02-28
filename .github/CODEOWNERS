@@ -1,0 +1,15 @@
+# Code Owners — Quiz Forge
+# These owners will be requested for review on PRs that touch their areas.
+
+# Default owner for everything
+* @theogengineer
+
+# Backend
+/backend/ @theogengineer
+
+# Frontend
+/frontend/ @theogengineer
+
+# Infrastructure & CI
+/docker-compose*.yml @theogengineer
+/.github/ @theogengineer

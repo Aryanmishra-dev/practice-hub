@@ -1,0 +1,340 @@
+[
+    {
+        "id": "expert_01",
+        "question": "What specific SQL query must be run on the ePO database after updating the Public DNS name in an Azure/GCP environment to enable secured port 443?",
+        "options": [
+            "update [EPOServerInfo] set SecureHttpPort='443'",
+            "update [EPOServerInfo] set RmdSecureHttpPort='443'",
+            "update [OrionServerProperties] set Port='443'",
+            "update [EPOConfig] set SecurePort='443'"
+        ],
+        "answer": "update [EPOServerInfo] set RmdSecureHttpPort='443'",
+        "difficulty": "Expert",
+        "explanation": "The guide specifies: update [EPOServerInfo] set RmdSecureHttpPort='443' ... to enable the secured port 443 for ePO - On-prem DNS."
+    },
+    {
+        "id": "expert_02",
+        "question": "Which specific functionality will NOT work in an Azure environment if the ePO server cannot communicate with agents in a private network (without VPN/DXL)?",
+        "options": [
+            "Policy Assignment",
+            "Push agent",
+            "Event Parsing",
+            "Dashboard Refresh"
+        ],
+        "answer": "Push agent",
+        "difficulty": "Expert",
+        "explanation": "Limitations section states: 'Push agent doesn't work — Use a VPN to overcome this limitation.'"
+    },
+    {
+        "id": "expert_03",
+        "question": "Which port must be configured in the inbound security group for a CSR Report Server in the cloud?",
+        "options": [
+            "Port 80",
+            "Port 443",
+            "Port 9111, 9112, 9121, 9129",
+            "Port 8081, 8082"
+        ],
+        "answer": "Port 9111, 9112, 9121, 9129",
+        "difficulty": "Expert",
+        "explanation": "Configure port 9111, 9112, 9121 and 9129 in CSR report server inbound security group."
+    },
+    {
+        "id": "expert_04",
+        "question": "What is the recommended maximum number of clients per DXL Broker?",
+        "options": [
+            "10,000",
+            "25,000",
+            "50,000",
+            "100,000"
+        ],
+        "answer": "50,000",
+        "difficulty": "Expert",
+        "explanation": "We recommend a maximum of 50,000 clients per DXL Broker."
+    },
+    {
+        "id": "expert_05",
+        "question": "For a Syslog Server in the cloud, which port must be configured in the ePO outbound security group?",
+        "options": [
+            "514",
+            "1514",
+            "6514",
+            "8514"
+        ],
+        "answer": "6514",
+        "difficulty": "Expert",
+        "explanation": "Configure port 6514 in the ePO - On-prem server outbound security group."
+    },
+    {
+        "id": "expert_06",
+        "question": "When configuring an AWS EC2 instance, what key pair private key file format is required?",
+        "options": [
+            ".ppk",
+            ".pem",
+            ".cer",
+            ".key"
+        ],
+        "answer": ".pem",
+        "difficulty": "Expert",
+        "explanation": "Select the Private key file format as .pem."
+    },
+    {
+        "id": "expert_07",
+        "question": "Installing ePO on AWS requires a minimum of how much storage?",
+        "options": [
+            "10-15 GB",
+            "20-30 GB",
+            "50-60 GB",
+            "100+ GB"
+        ],
+        "answer": "20-30 GB",
+        "difficulty": "Expert",
+        "explanation": "20-30 GB is the minimum storage required to install ePO."
+    },
+    {
+        "id": "expert_08",
+        "question": "Which Trellix Agent versions are explicitly noted as NOT supporting port 80?",
+        "options": [
+            "Agent 4.0 and later",
+            "Agent 4.8 and later",
+            "Agent 5.x and later",
+            "Agent 6.x and later"
+        ],
+        "answer": "Agent 5.x and later",
+        "difficulty": "Expert",
+        "explanation": "Trellix Agent 5.x and later does not support port 80."
+    },
+    {
+        "id": "expert_09",
+        "question": "When using a 'Universal Naming Convention (UNC)' distributed repository, which protocol port must be opened?",
+        "options": [
+            "SMB Port 445",
+            "NFS Port 2049",
+            "FTP Port 21",
+            "HTTP Port 80"
+        ],
+        "answer": "NFS Port 2049",
+        "difficulty": "Expert",
+        "explanation": "Open NFS port 2049 in the ePO - On-prem server and in the Repository server."
+    },
+    {
+        "id": "expert_10",
+        "question": "If 'Wake up agent using Agent Handler' fails in a private cloud network, what is the suggested workaround besides VPN?",
+        "options": [
+            "Configure NAT",
+            "Configure DXL",
+            "Use a Relay Server",
+            "Increase Timeout"
+        ],
+        "answer": "Configure DXL",
+        "difficulty": "Expert",
+        "explanation": "Use a VPN or configure DXL to overcome this limitation."
+    },
+    {
+        "id": "expert_11",
+        "question": "For a 'Distributed Server' in the cloud, which OUTBOUND port needs to be configured on the ePO server?",
+        "options": [
+            "1433",
+            "2049",
+            "8081",
+            "8443"
+        ],
+        "answer": "2049",
+        "difficulty": "Expert",
+        "explanation": "Configure port 2049 in the ePO - On-prem server outbound security group."
+    },
+    {
+        "id": "expert_12",
+        "question": "What is the default SQL Server name format when installing ePO on an Azure server?",
+        "options": [
+            "<AzureServerName>\\EPOSERVER",
+            "<AzureServerName>\\SQLEXPRESS",
+            "<AzureServerName>\\MSSQLSERVER",
+            "Localhost\\EPOSERVER"
+        ],
+        "answer": "<AzureServerName>\\EPOSERVER",
+        "difficulty": "Expert",
+        "explanation": "By default, the ePO - On-prem SQL Server name is <AzureServerName>\\EPOSERVER."
+    },
+    {
+        "id": "expert_13",
+        "question": "When creating an AWS Key Pair for ePO, what type should be selected?",
+        "options": [
+            "DSA",
+            "RSA",
+            "ECDSA",
+            "ED25519"
+        ],
+        "answer": "RSA",
+        "difficulty": "Expert",
+        "explanation": "Select the key pair type as RSA."
+    },
+    {
+        "id": "expert_14",
+        "question": "Which additional column setting in 'Agent Handlers' actions must be manually toggled after creating a virtual Agent Handler group?",
+        "options": [
+            "Activate",
+            "Enable",
+            "Deploy",
+            "Link"
+        ],
+        "answer": "Enable",
+        "difficulty": "Expert",
+        "explanation": "In Agent Handlers → Handler groups... Enable it it in the Actions column. Agent Handlers are disabled by default."
+    },
+    {
+        "id": "expert_15",
+        "question": "For an AWS deployment, which Load Balancer type is referenced for Agent Handlers?",
+        "options": [
+            "Application Load Balancer",
+            "Network Load Balancer",
+            "Classic Load Balancer",
+            "Elastic Load Balancer (ELB)"
+        ],
+        "answer": "Elastic Load Balancer (ELB)",
+        "difficulty": "Expert",
+        "explanation": "Use an Elastic Load Balancer (ELB) with your Agent Handler to distribute the traffic."
+    },
+    {
+        "id": "expert_16",
+        "question": "What specific SQL parameter needs to be set for the AgentDeploymentURLServer in the [EPOServerInfo] table update query for AWS endpoints?",
+        "options": [
+            "<App Server IP>",
+            "<App Server DNS Name>",
+            "<Load Balancer DNS>",
+            "<VPC ID>"
+        ],
+        "answer": "<App Server DNS Name>",
+        "difficulty": "Expert",
+        "explanation": "AgentDeploymentURLServer = '<App Server DNS Name>'."
+    },
+    {
+        "id": "expert_17",
+        "question": "Which combination of servers is 'Not recommended' for environments with 10,000–25,000 nodes?",
+        "options": [
+            "Agent Handler + DXL Broker",
+            "ePO - On-prem + DXL Broker",
+            "SuperAgent + DXL Broker",
+            "SQL + DXL Broker"
+        ],
+        "answer": "ePO - On-prem + DXL Broker",
+        "difficulty": "Expert",
+        "explanation": "10,000–25,000 ePO - On-prem + DXL Broker: Not recommended."
+    },
+    {
+        "id": "expert_18",
+        "question": "In a cluster environment, if you combine DXL with a SuperAgent, what is the limitation mentioned?",
+        "options": [
+            "It requires double the RAM",
+            "It lowers the total number of systems that can be served",
+            "It requires a 10Gbps NIC",
+            "It is not supported"
+        ],
+        "answer": "It lowers the total number of systems that can be served",
+        "difficulty": "Expert",
+        "explanation": "Combining DXL and repository resources... lowers the total number of systems that can be served."
+    },
+    {
+        "id": "expert_19",
+        "question": "For AWS installation, what must be created before launching the EC2 instance (Network Settings)?",
+        "options": [
+            "VPN Gateway",
+            "Virtual Private Cloud (VPC)",
+            "Direct Connect",
+            "Transit Gateway"
+        ],
+        "answer": "Virtual Private Cloud (VPC)",
+        "difficulty": "Expert",
+        "explanation": "Create a Virtual Private Cloud... Select the desired VPC... then create an EC2 instance."
+    },
+    {
+        "id": "expert_20",
+        "question": "Which protocol versions must the SQL Server support for communication in an AWS environment (per KB91823 reference)?",
+        "options": [
+            "SSLv3",
+            "TLSv1.0 or TLSv1.1",
+            "TLSv1.1 or TLSv1.2",
+            "TLSv1.3 only"
+        ],
+        "answer": "TLSv1.1 or TLSv1.2",
+        "difficulty": "Expert",
+        "explanation": "Make sure the Trellix ePO server machine and SQL server machine supports communication over TLSv1.1 or TLSv1.2."
+    },
+    {
+        "id": "expert_21",
+        "question": "For 'Distributed repositories such as SuperAgent, FTP, HTTP, and UNC' to work in Azure, what condition must be met regarding private networks?",
+        "options": [
+            "They must be on the same subnet",
+            "The ePO server must be able to communicate with remote servers",
+            "They must use IPv6",
+            "They must be installed on Linux"
+        ],
+        "answer": "The ePO server must be able to communicate with remote servers",
+        "difficulty": "Expert",
+        "explanation": "If the ePO - On-prem server... can't communicate with remote servers in private networks, then these features don't work."
+    },
+    {
+        "id": "expert_22",
+        "question": "What is the recommended RAM for a combined 'ePO - On-prem + DXL Broker' server managing < 10,000 nodes?",
+        "options": [
+            "8 GB",
+            "16 GB",
+            "24 GB",
+            "32 GB"
+        ],
+        "answer": "16 GB",
+        "difficulty": "Expert",
+        "explanation": "< 10,000 ePO - On-prem + DXL Broker: 16-GB RAM."
+    },
+    {
+        "id": "expert_23",
+        "question": "If you use a 'Bastion Host' in AWS, what technology is commonly used to connect to the internal servers?",
+        "options": [
+            "SSH Tunneling",
+            "Remote Desktop Gateway",
+            "Site-to-Site VPN",
+            "Direct Connect"
+        ],
+        "answer": "Remote Desktop Gateway",
+        "difficulty": "Expert",
+        "explanation": "Create a Bastion Host / Jump server using remote desktop gateway."
+    },
+    {
+        "id": "expert_24",
+        "question": "When connecting to an AWS EC2 Windows instance, what is required to retrieve the Initial Administrator Password?",
+        "options": [
+            "The Instance ID",
+            "The RSA Private Key (.pem file)",
+            "The Root User credentials",
+            "The MFA Token"
+        ],
+        "answer": "The RSA Private Key (.pem file)",
+        "difficulty": "Expert",
+        "explanation": "Click Upload private key file and upload the .pem file... Click Decrypt Password."
+    },
+    {
+        "id": "expert_25",
+        "question": "In a combined 'ePO + DXL + SQL' server for < 10,000 nodes, what is the disk requirement?",
+        "options": [
+            "500 GB",
+            "1.0 TB",
+            "1.5 TB",
+            "2.0 TB"
+        ],
+        "answer": "1.5 TB",
+        "difficulty": "Expert",
+        "explanation": "< 10,000 ePO - On-prem + DXL Broker + SQL: 1.5-TB disk."
+    },
+    {
+        "id": "expert_26",
+        "question": "For GCP, which port must be configured in the inbound security group for a Syslog Server?",
+        "options": [
+            "514",
+            "6514",
+            "1468",
+            "443"
+        ],
+        "answer": "6514",
+        "difficulty": "Expert",
+        "explanation": "Configure port 6514 in Syslog server inbound security group."
+    }
+]

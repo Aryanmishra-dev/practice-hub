@@ -1,0 +1,327 @@
+[
+    {
+        "id": "normal_01",
+        "question": "What Windows feature should be turned off before beginning the installation or upgrade of ePO software?",
+        "options": [
+            "Windows Firewall",
+            "Windows Defender",
+            "Windows Updates",
+            "User Account Control"
+        ],
+        "answer": "Windows Updates",
+        "difficulty": "Normal",
+        "explanation": "The guide states: 'Turn off Windows updates before you begin installing or upgrading your software.'"
+    },
+    {
+        "id": "normal_02",
+        "question": "Which of the following Microsoft Visual C++ Redistributable packages is NOT explicitly listed as required and automatically installed?",
+        "options": [
+            "2010",
+            "2013",
+            "2015",
+            "2019"
+        ],
+        "answer": "2019",
+        "difficulty": "Normal",
+        "explanation": "The guide lists 2010, 2013, and 2015 as required and installed automatically."
+    },
+    {
+        "id": "normal_03",
+        "question": "What is the recommended maximum number of clients per DXL Broker?",
+        "options": [
+            "10,000",
+            "25,000",
+            "50,000",
+            "100,000"
+        ],
+        "answer": "50,000",
+        "difficulty": "Normal",
+        "explanation": "We recommend a maximum of 50,000 clients per DXL Broker."
+    },
+    {
+        "id": "normal_04",
+        "question": "When using Amazon RDS for SQL Server, what must the Backup Retention Period be set to during ePO installation?",
+        "options": [
+            "0 days",
+            "1 day",
+            "7 days",
+            "30 days"
+        ],
+        "answer": "0 days",
+        "difficulty": "Normal",
+        "explanation": "For Backup Retention Period, select 0 days during installation."
+    },
+    {
+        "id": "normal_05",
+        "question": "Which SQL Server option must be enabled for ePO - On-prem?",
+        "options": [
+            "Nested triggers",
+            "Recursive triggers",
+            "CLR Integration",
+            "xp_cmdshell"
+        ],
+        "answer": "Nested triggers",
+        "difficulty": "Normal",
+        "explanation": "The SQL Server Nested Triggers option must be enabled."
+    },
+    {
+        "id": "normal_06",
+        "question": "What is the required Collation property for the SQL database?",
+        "options": [
+            "Case Insensitivity (CI)",
+            "Case Sensitivity (CS)",
+            "Binary Sort",
+            "Dictionary Order"
+        ],
+        "answer": "Case Insensitivity (CI)",
+        "difficulty": "Normal",
+        "explanation": "ePO supports collations using Case Insensitivity (CI)."
+    },
+    {
+        "id": "normal_07",
+        "question": "For a 'Combined Services' environment with < 10,000 nodes, what are the specs for ePO + DXL Broker + SQL on one server?",
+        "options": [
+            "4 cores, 8 GB RAM",
+            "8 cores, 16 GB RAM",
+            "10 cores, 24 GB RAM",
+            "16 cores, 32 GB RAM"
+        ],
+        "answer": "10 cores, 24 GB RAM",
+        "difficulty": "Normal",
+        "explanation": "For < 10,000 nodes, combining ePO + DXL + SQL requires 10 cores and 24-GB RAM."
+    },
+    {
+        "id": "normal_08",
+        "question": "Is it recommended to combine ePO - On-prem and DXL Broker on the same server for 25,000–75,000 nodes?",
+        "options": [
+            "Yes",
+            "No / Not recommended",
+            "Yes, with 32GB RAM",
+            "Only on Linux"
+        ],
+        "answer": "No / Not recommended",
+        "difficulty": "Normal",
+        "explanation": "For 25,000–75,000 nodes, combining ePO + DXL Broker is marked as 'Not recommended'."
+    },
+    {
+        "id": "normal_09",
+        "question": "How are IPv6 addresses displayed in the ePO interface to distinguish them?",
+        "options": [
+            "Enclosed in braces {}",
+            "Enclosed in brackets []",
+            "Prefixed with ipv6:",
+            "Italicized"
+        ],
+        "answer": "Enclosed in brackets []",
+        "difficulty": "Normal",
+        "explanation": "IPv6-related properties are displayed in the expanded form and are enclosed in brackets."
+    },
+    {
+        "id": "normal_10",
+        "question": "What is the fixed database load for 'Work queue checks' per Agent Handler?",
+        "options": [
+            "Every second",
+            "Every 10 seconds",
+            "Every minute",
+            "Every 5 minutes"
+        ],
+        "answer": "Every 10 seconds",
+        "difficulty": "Normal",
+        "explanation": "Each Agent Handler performs Work queue checks every 10 seconds."
+    },
+    {
+        "id": "normal_11",
+        "question": "How many database connections per CPU are held open to the Apache service by an Agent Handler?",
+        "options": [
+            "One",
+            "Two",
+            "Four",
+            "Eight"
+        ],
+        "answer": "Four",
+        "difficulty": "Normal",
+        "explanation": "Four connections per CPU to the Apache service are held open."
+    },
+    {
+        "id": "normal_12",
+        "question": "What is the recommended disk space for a Windows-based DXL Broker (Recommended specs)?",
+        "options": [
+            "10 GB",
+            "20 GB",
+            "50 GB",
+            "100 GB"
+        ],
+        "answer": "20 GB",
+        "difficulty": "Normal",
+        "explanation": "For Windows, recommended disk space is 20 GB."
+    },
+    {
+        "id": "normal_13",
+        "question": "When configuring updates, what strategy helps reduce load on distributed repositories?",
+        "options": [
+            "Synchronize all updates",
+            "Randomize update times",
+            "Update only on weekends",
+            "Disable P2P"
+        ],
+        "answer": "Randomize update times",
+        "difficulty": "Normal",
+        "explanation": "Tip: When configuring updates, randomize update times across endpoints."
+    },
+    {
+        "id": "normal_14",
+        "question": "By what factor can Peer-to-peer enabled agents increase distributed repository system capability?",
+        "options": [
+            "2–5X",
+            "10–100X",
+            "500X",
+            "It does not increase capability"
+        ],
+        "answer": "10–100X",
+        "difficulty": "Normal",
+        "explanation": "Peer-to-peer enabled agents can increase distributed repository system capability by 10–100X."
+    },
+    {
+        "id": "normal_15",
+        "question": "For 'mixed mode' network configuration, which IP versions does ePO support?",
+        "options": [
+            "IPv4 only",
+            "IPv6 only",
+            "IPv4 and IPv6",
+            "IPX/SPX"
+        ],
+        "answer": "IPv4 and IPv6",
+        "difficulty": "Normal",
+        "explanation": "Mixed mode — Supports IPv4 and IPv6 address formats."
+    },
+    {
+        "id": "normal_16",
+        "question": "If your network uses only IPv4, what mode will the ePO server work in?",
+        "options": [
+            "Mixed mode",
+            "Only IPv4",
+            "Legacy mode",
+            "Compatibility mode"
+        ],
+        "answer": "Only IPv4",
+        "difficulty": "Normal",
+        "explanation": "If your network is configured to use only IPv4 addresses, your server works in Only IPv4 mode."
+    },
+    {
+        "id": "normal_17",
+        "question": "What is the recommended RAM for a standalone Linux DXL Broker?",
+        "options": [
+            "4 GB",
+            "8 GB",
+            "16 GB",
+            "32 GB"
+        ],
+        "answer": "8 GB",
+        "difficulty": "Normal",
+        "explanation": "Recommended memory for Linux DXL Broker is 8 GB."
+    },
+    {
+        "id": "normal_18",
+        "question": "Which protocol is disabled by default for communication to external servers like SQL?",
+        "options": [
+            "TLS 1.0",
+            "TLS 1.1",
+            "TLS 1.2",
+            "SSL 3.0"
+        ],
+        "answer": "TLS 1.0",
+        "difficulty": "Normal",
+        "explanation": "TLS 1.0 is disabled by default for communication to external servers."
+    },
+    {
+        "id": "normal_19",
+        "question": "For endpoints in branch offices (< 1000), what is the preferred repository strategy?",
+        "options": [
+            "Local Distributed Repository",
+            "SuperAgent distributed repository or no repository (using P2P)",
+            "Dedicated Agent Handler",
+            "Offline updates"
+        ],
+        "answer": "SuperAgent distributed repository or no repository (using P2P)",
+        "difficulty": "Normal",
+        "explanation": "Choose a single SuperAgent distributed repository or no repository at all (preferred) with peer-to-peer enabled."
+    },
+    {
+        "id": "normal_20",
+        "question": "What credential type is required for Windows authentication to SQL Server?",
+        "options": [
+            "Domain User",
+            "Domain Admin",
+            "Domain credentials with Database Owner (dbo) rights",
+            "Local Admin"
+        ],
+        "answer": "Domain credentials with Database Owner (dbo) rights",
+        "difficulty": "Normal",
+        "explanation": "Windows authentication credentials — Domain credentials that have Database Owner (dbo) rights."
+    },
+    {
+        "id": "normal_21",
+        "question": "What must be done to the ePO public DNS name after installing on a cloud server?",
+        "options": [
+            "It updates automatically",
+            "Update it with the elastic IP address or DNS",
+            "Remove it",
+            "Change it to 'localhost'"
+        ],
+        "answer": "Update it with the elastic IP address or DNS",
+        "difficulty": "Normal",
+        "explanation": "Update Trellix ePO Server Public DNS in Server Settings with elastic IP address or DNS."
+    },
+    {
+        "id": "normal_22",
+        "question": "Which operating system is listed as supported for evaluation but not for production support?",
+        "options": [
+            "Windows Server 2019",
+            "Windows 10 (x64)",
+            "Windows Server 2012",
+            "Windows Server 2016"
+        ],
+        "answer": "Windows 10 (x64)",
+        "difficulty": "Normal",
+        "explanation": "Windows 10 (x64 only) is listed under Operating systems for evaluation."
+    },
+    {
+        "id": "normal_23",
+        "question": "When setting a Literal IPv6 address for a UNC source, which format must be used?",
+        "options": [
+            "Standard IPv6 format",
+            "Microsoft Literal IPv6 format",
+            "Dot-decimal notation",
+            "Base64 encoded"
+        ],
+        "answer": "Microsoft Literal IPv6 format",
+        "difficulty": "Normal",
+        "explanation": "When setting a Literal IPv6 address for a UNC source, you must use the Microsoft Literal IPv6 format."
+    },
+    {
+        "id": "normal_24",
+        "question": "Is 'MSXML 3.0 and 6.0' required for ePO installation?",
+        "options": [
+            "Yes",
+            "No",
+            "Recommended",
+            "Only for SQL"
+        ],
+        "answer": "Yes",
+        "difficulty": "Normal",
+        "explanation": "MSXML 3.0 and 6.0: Required — Installed automatically."
+    },
+    {
+        "id": "normal_25",
+        "question": "What is the minimum network interface speed required?",
+        "options": [
+            "10 megabit",
+            "100 megabit",
+            "1 gigabit",
+            "10 gigabit"
+        ],
+        "answer": "100 megabit",
+        "difficulty": "Normal",
+        "explanation": "Network Interface Card (NIC): 100 megabit minimum."
+    }
+]

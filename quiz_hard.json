@@ -1,0 +1,327 @@
+[
+    {
+        "id": "hard_01",
+        "question": "Which of the following ports can be changed AFTER ePO installation is complete?",
+        "options": [
+            "Agent-server communication port (80)",
+            "Agent-server communication secure port (443)",
+            "Console-to-application server communication port (8443)",
+            "Agent wake-up communication port (8081)"
+        ],
+        "answer": "Agent wake-up communication port (8081)",
+        "difficulty": "Hard",
+        "explanation": "According to the port table and notes, only Agent wake-up and Agent broadcast ports can be changed after installation."
+    },
+    {
+        "id": "hard_02",
+        "question": "Which SQL Server role is required for the ePO installation account during the initial installation but can be revoked afterwards?",
+        "options": [
+            "sysadmin",
+            "db_owner",
+            "dbcreator",
+            "public"
+        ],
+        "answer": "dbcreator",
+        "difficulty": "Hard",
+        "explanation": "The dbcreator server role is required during installation but can be removed after the database is created."
+    },
+    {
+        "id": "hard_03",
+        "question": "Which character is strictly forbidden in SQL database user names?",
+        "options": [
+            "Underscore (_)",
+            "Hyphen (-)",
+            "Colon (:)",
+            "Period (.)"
+        ],
+        "answer": "Colon (:)",
+        "difficulty": "Hard",
+        "explanation": "Colons (:) and Semicolons (;) in user names are unsupported."
+    },
+    {
+        "id": "hard_04",
+        "question": "What is the specific format of the ePO Events database name created during installation?",
+        "options": [
+            "ePO_Events_<ServerName>",
+            "ePO_<ServerName>_Events",
+            "Trellix_ePO_<ServerName>_Events",
+            "<ServerName>_ePO_Events"
+        ],
+        "answer": "ePO_<ServerName>_Events",
+        "difficulty": "Hard",
+        "explanation": "The new SQL database is created in the format: ePO_<ePOServerName>_Events."
+    },
+    {
+        "id": "hard_05",
+        "question": "What is the minimum character length for the server recovery passphrase?",
+        "options": [
+            "8 characters",
+            "10 characters",
+            "14 characters",
+            "20 characters"
+        ],
+        "answer": "14 characters",
+        "difficulty": "Hard",
+        "explanation": "The passphrase must be of 14–200 characters."
+    },
+    {
+        "id": "hard_06",
+        "question": "When configuring 'Full Recovery Model' for the ePO Events database, what administrative task becomes mandatory to prevent disk space exhaustion?",
+        "options": [
+            "Periodic shrinking of the database",
+            "Periodic backups of the Transaction log",
+            "Periodic re-indexing",
+            "Periodic restart of SQL Server"
+        ],
+        "answer": "Periodic backups of the Transaction log",
+        "difficulty": "Hard",
+        "explanation": "Full Recovery Model includes the administrative overhead of periodically backing up the Transaction log."
+    },
+    {
+        "id": "hard_07",
+        "question": "If you are using dynamic ports for SQL Server, what service must be running on the SQL Server?",
+        "options": [
+            "SQL Server Agent",
+            "SQL Server Browser",
+            "SQL Server Reporting Services",
+            "SQL Server Integration Services"
+        ],
+        "answer": "SQL Server Browser",
+        "difficulty": "Hard",
+        "explanation": "If you are using dynamic ports, the SQL Browser service must be running on the SQL Server."
+    },
+    {
+        "id": "hard_08",
+        "question": "Which TLS version is now supported by the ePO - On-prem console (as of 5.10.0)?",
+        "options": [
+            "TLS 1.0",
+            "TLS 1.1",
+            "TLS 1.2 only",
+            "TLS 1.3"
+        ],
+        "answer": "TLS 1.3",
+        "difficulty": "Hard",
+        "explanation": "ePO - On-prem console now supports TLS 1.3."
+    },
+    {
+        "id": "hard_09",
+        "question": "What happens if you run Setup.exe without first extracting the contents of the installation .zip file?",
+        "options": [
+            "It prompts to extract files",
+            "It runs in read-only mode",
+            "The installation fails",
+            "It installs only the core components"
+        ],
+        "answer": "The installation fails",
+        "difficulty": "Hard",
+        "explanation": "Caution: If you run Setup.exe without first extracting the contents of the .zip file, the installation fails."
+    },
+    {
+        "id": "hard_10",
+        "question": "Which SQL restoration requirement must be met if you intend to restore ePO from a database snapshot?",
+        "options": [
+            "The server name must be different",
+            "You must have the server recovery passphrase used with the snapshot",
+            "The database must be in Simple Recovery Model",
+            "The IP address must change"
+        ],
+        "answer": "You must have the server recovery passphrase used with the snapshot",
+        "difficulty": "Hard",
+        "explanation": "You must Know the server recovery passphrase used with your Disaster Recovery Snapshot records."
+    },
+    {
+        "id": "hard_11",
+        "question": "What is the default port for Client-to-server authenticated communication?",
+        "options": [
+            "8081",
+            "8082",
+            "8443",
+            "8444"
+        ],
+        "answer": "8444",
+        "difficulty": "Hard",
+        "explanation": "Client-to-server authenticated communication port default is 8444."
+    },
+    {
+        "id": "hard_12",
+        "question": "What is the maximum character length for the server recovery passphrase?",
+        "options": [
+            "100",
+            "128",
+            "200",
+            "256"
+        ],
+        "answer": "200",
+        "difficulty": "Hard",
+        "explanation": "The passphrase must be of 14–200 characters."
+    },
+    {
+        "id": "hard_13",
+        "question": "Why is the Simple Recovery Model considered acceptable for most enterprise customers?",
+        "options": [
+            "It is faster",
+            "It requires no backups",
+            "Data lost in a disaster is usually just event data since last full backup",
+            "It supports larger databases"
+        ],
+        "answer": "Data lost in a disaster is usually just event data since last full backup",
+        "difficulty": "Hard",
+        "explanation": "Because the data lost in a disaster is usually event data since the last full backup."
+    },
+    {
+        "id": "hard_14",
+        "question": "If the TCP Dynamic Ports field is blank in SQL Configuration Manager, what does this indicate?",
+        "options": [
+            "TCP/IP is disabled",
+            "The SQL Server is using a static port",
+            "The SQL Browser service is stopped",
+            "The firewall is blocking ports"
+        ],
+        "answer": "The SQL Server is using a static port",
+        "difficulty": "Hard",
+        "explanation": "If the value for TCP Dynamic Ports is blank, then your SQL Server is using a static port."
+    },
+    {
+        "id": "hard_15",
+        "question": "Which service connection consumes 'two connections per CPU' on the database?",
+        "options": [
+            "Apache service",
+            "Event Parser service",
+            "Tomcat service",
+            "Agent Handler service"
+        ],
+        "answer": "Event Parser service",
+        "difficulty": "Hard",
+        "explanation": "Two connections per CPU to the Event Parser service."
+    },
+    {
+        "id": "hard_16",
+        "question": "Which browser is explicitly NOT supported for ePO - On-prem 5.10.0?",
+        "options": [
+            "Firefox",
+            "Chrome",
+            "Microsoft Edge",
+            "Internet Explorer"
+        ],
+        "answer": "Internet Explorer",
+        "difficulty": "Hard",
+        "explanation": "Internet Explorer is no longer supported in ePO - On-prem 5.10.0 SP1 and later."
+    },
+    {
+        "id": "hard_17",
+        "question": "When entering SQL details manually, what syntax is used to specify a named instance?",
+        "options": [
+            "ServerName:InstanceName",
+            "ServerName/InstanceName",
+            "ServerName\\InstanceName",
+            "ServerName.InstanceName"
+        ],
+        "answer": "ServerName\\InstanceName",
+        "difficulty": "Hard",
+        "explanation": "Enter the name of the SQL Server and the name of the SQL instance separated by a backslash (e.g., SQLServer\\MSSQLSERVER)."
+    },
+    {
+        "id": "hard_18",
+        "question": "Which character is forbidden in a SQL password?",
+        "options": [
+            "Exclamation mark (!)",
+            "Single quote (')",
+            "At sign (@)",
+            "Pound sign (#)"
+        ],
+        "answer": "Single quote (')",
+        "difficulty": "Hard",
+        "explanation": "Single quotes ( ' ) and Double quotes ( \" ) are listed as unsupported password characters."
+    },
+    {
+        "id": "hard_19",
+        "question": "If you select 'Enable Automatic Product Installation', when does the process actually start?",
+        "options": [
+            "Immediately upon selection",
+            "During the file extraction phase",
+            "When you complete installing ePO and before you log on",
+            "After the first reboot"
+        ],
+        "answer": "When you complete installing ePO and before you log on",
+        "difficulty": "Hard",
+        "explanation": "It starts running when you complete installing ePO - On-prem and is finished before you log on."
+    },
+    {
+        "id": "hard_20",
+        "question": "What permission does the 'db_owner' role grant to the ePO SQL user account?",
+        "options": [
+            "Full administrative access to the SQL Server",
+            "Ability to create new databases",
+            "Full control over the ePO database",
+            "Read-only access to all databases"
+        ],
+        "answer": "Full control over the ePO database",
+        "difficulty": "Hard",
+        "explanation": "This ePO - On-prem SQL user account is granted the database role permission db_owner for the ePO - On-prem database."
+    },
+    {
+        "id": "hard_21",
+        "question": "If you stop the Automatic Product Installation, how must you subsequently install products?",
+        "options": [
+            "By restarting the Setup wizard",
+            "Using the Software Catalog or manually in Main Repository",
+            "By running the P2P updater",
+            "It is not possible to install them later"
+        ],
+        "answer": "Using the Software Catalog or manually in Main Repository",
+        "difficulty": "Hard",
+        "explanation": "You must use the Software Catalog to install your products, or manually install them in the Main Repository."
+    },
+    {
+        "id": "hard_22",
+        "question": "Which of the following creates a certificate warning when accessing the ePO web console?",
+        "options": [
+            "Using a self-signed certificate",
+            "Using a CA-signed certificate",
+            "Using TLS 1.2",
+            "Using localhost"
+        ],
+        "answer": "Using a self-signed certificate",
+        "difficulty": "Hard",
+        "explanation": "A certificate warning appears if you are using a self-signed certificate."
+    },
+    {
+        "id": "hard_23",
+        "question": "For a 'mixed mode' IPv4/IPv6 configuration, what format is used for UNC source Literal IPv6 addresses?",
+        "options": [
+            "Standard",
+            "Microsoft Literal",
+            "Canonical",
+            "Compressed"
+        ],
+        "answer": "Microsoft Literal",
+        "difficulty": "Hard",
+        "explanation": "When setting a Literal IPv6 address for a UNC source, you must use the Microsoft Literal IPv6 format."
+    },
+    {
+        "id": "hard_24",
+        "question": "What is the recommended RAM for an ePO server managing 150,000+ nodes?",
+        "options": [
+            "16–32 GB",
+            "16–64 GB",
+            "64–128 GB",
+            "128 GB+"
+        ],
+        "answer": "16–64 GB",
+        "difficulty": "Hard",
+        "explanation": "For 150,000+ nodes, the recommended RAM is 16–64 GB (same as 75k-150k bracket)."
+    },
+    {
+        "id": "hard_25",
+        "question": "Which port is used for Agent broadcast communication?",
+        "options": [
+            "8081",
+            "8082",
+            "8443",
+            "8444"
+        ],
+        "answer": "8082",
+        "difficulty": "Hard",
+        "explanation": "Agent broadcast communication port: 8082."
+    }
+]

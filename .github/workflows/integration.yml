@@ -1,0 +1,89 @@
+name: Integration Tests
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  integration:
+    name: Full Stack Smoke Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create backend .env
+        run: |
+          cat > backend/.env << 'EOF'
+          SUPABASE_URL=https://placeholder.supabase.co
+          SUPABASE_KEY=placeholder-key
+          SECRET_KEY=ci-test-secret-key-not-for-production
+          CORS_ORIGINS=http://localhost:3000
+          DEBUG=true
+          EOF
+
+      - name: Create frontend .env.local
+        run: |
+          cat > frontend/.env.local << 'EOF'
+          NEXT_PUBLIC_SUPABASE_URL=https://placeholder.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY=placeholder-key
+          NEXT_PUBLIC_API_URL=http://localhost:8000
+          EOF
+
+      - name: Build and start services
+        run: docker compose up -d --build
+        timeout-minutes: 10
+
+      - name: Wait for services to be ready
+        run: |
+          echo "Waiting for backend..."
+          for i in $(seq 1 30); do
+            if curl -s http://localhost:8000/health > /dev/null 2>&1; then
+              echo "Backend is ready!"
+              break
+            fi
+            echo "Attempt $i/30..."
+            sleep 2
+          done
+
+          echo "Waiting for frontend..."
+          for i in $(seq 1 30); do
+            if curl -s http://localhost:3000 > /dev/null 2>&1; then
+              echo "Frontend is ready!"
+              break
+            fi
+            echo "Attempt $i/30..."
+            sleep 2
+          done
+
+      - name: Run smoke tests
+        run: |
+          # Health check
+          echo "=== Backend Health ==="
+          curl -sf http://localhost:8000/health | python3 -m json.tool
+
+          # Categories
+          echo "=== Categories ==="
+          curl -sf http://localhost:8000/api/v1/categories | python3 -m json.tool
+
+          # Questions
+          echo "=== Questions (limit 2) ==="
+          curl -sf "http://localhost:8000/api/v1/categories/epo/questions?limit=2" | python3 -m json.tool
+
+          # Frontend
+          echo "=== Frontend ==="
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000)
+          if [ "$STATUS" = "200" ]; then
+            echo "Frontend returned 200 OK"
+          else
+            echo "Frontend returned $STATUS"
+            exit 1
+          fi
+
+      - name: Collect logs on failure
+        if: failure()
+        run: docker compose logs
+
+      - name: Tear down
+        if: always()
+        run: docker compose down -v

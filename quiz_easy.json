@@ -1,0 +1,325 @@
+[
+  {
+    "id": "easy_01",
+    "question": "What is the minimum recommended CPU speed for a server-class ePO - On-prem server?",
+    "options": [
+      "1.5 GHz",
+      "2.0 GHz",
+      "2.2 GHz",
+      "3.0 GHz"
+    ],
+    "answer": "2.2 GHz",
+    "difficulty": "Easy",
+    "explanation": "According to Important sizing considerations, the minimum CPU core speed is 2.2 GHz."
+  },
+  {
+    "id": "easy_02",
+    "question": "How much RAM should be added to the SQL Server for every 25,000 nodes?",
+    "options": [
+      "8 GB",
+      "16 GB",
+      "32 GB",
+      "64 GB"
+    ],
+    "answer": "16 GB",
+    "difficulty": "Easy",
+    "explanation": "Sizing considerations recommend adding 16 GB of RAM to SQL Server for every 25,000 nodes."
+  },
+  {
+    "id": "easy_03",
+    "question": "What does 'Vertical Scalability' refer to in the ePO environment?",
+    "options": [
+      "Adding more Agent Handlers",
+      "Adding more ePO servers",
+      "Upgrading to bigger, faster hardware",
+      "Moving to the cloud"
+    ],
+    "answer": "Upgrading to bigger, faster hardware",
+    "difficulty": "Easy",
+    "explanation": "Vertical scalability is defined as adding and upgrading to bigger, faster hardware to manage larger environments."
+  },
+  {
+    "id": "easy_04",
+    "question": "What is the recommendation for the number of Agent Handlers per managed systems?",
+    "options": [
+      "One Agent Handler for every 10,000 systems",
+      "One Agent Handler for every 25,000 systems",
+      "One Agent Handler for every 50,000 systems",
+      "One Agent Handler for every 100,000 systems"
+    ],
+    "answer": "One Agent Handler for every 50,000 systems",
+    "difficulty": "Easy",
+    "explanation": "The guide recommends one Agent Handler for every 50,000 systems."
+  },
+  {
+    "id": "easy_05",
+    "question": "Which installation workflow is used to provide high availability for server clusters?",
+    "options": [
+      "Cloud services installation",
+      "Single server installation",
+      "Cluster installation",
+      "Upgrade installation"
+    ],
+    "answer": "Cluster installation",
+    "difficulty": "Easy",
+    "explanation": "The Cluster installation workflow provides high availability for server clusters using Microsoft Cluster Server (MSCS)."
+  },
+  {
+    "id": "easy_06",
+    "question": "What is the recommended SQL storage sector size provided by Microsoft?",
+    "options": [
+      "4 KB",
+      "16 KB",
+      "32 KB",
+      "64 KB"
+    ],
+    "answer": "64 KB",
+    "difficulty": "Easy",
+    "explanation": "Microsoft recommends that SQL storage solutions are allocated with a 64-KB sector size."
+  },
+  {
+    "id": "easy_07",
+    "question": "Which component manages the horizontal scalability of the ePO environment?",
+    "options": [
+      "SQL Server",
+      "Agent Handlers",
+      "Tomcat",
+      "Apache"
+    ],
+    "answer": "Agent Handlers",
+    "difficulty": "Easy",
+    "explanation": "Horizontal scalability is accomplished by installing additional Agent Handlers."
+  },
+  {
+    "id": "easy_08",
+    "question": "What is the estimated event retention period used for sizing storage capacity?",
+    "options": [
+      "3 months",
+      "6 months",
+      "1 year",
+      "2 years"
+    ],
+    "answer": "6 months",
+    "difficulty": "Easy",
+    "explanation": "Storage capacity estimates are based on an event retention period of 6 months."
+  },
+  {
+    "id": "easy_09",
+    "question": "For an environment with 25,000–75,000 nodes, what is the recommended RAM for the ePO server?",
+    "options": [
+      "8–16 GB",
+      "16–32 GB",
+      "32–64 GB",
+      "64–128 GB"
+    ],
+    "answer": "16–32 GB",
+    "difficulty": "Easy",
+    "explanation": "For 25,000–75,000 nodes, the recommended RAM for the ePO server is 16–32 GB."
+  },
+  {
+    "id": "easy_10",
+    "question": "What is the recommended SQL Server Performance (IOPS) for 75,000–150,000 nodes?",
+    "options": [
+      ">10,000",
+      ">30,000",
+      ">50,000",
+      ">90,000"
+    ],
+    "answer": ">30,000",
+    "difficulty": "Easy",
+    "explanation": "For 75,000–150,000 nodes, the recommended SQL Server Performance is >30,000 IOPS."
+  },
+  {
+    "id": "easy_11",
+    "question": "True or False: You can install ePO - On-prem on a 32-bit operating system.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "difficulty": "Easy",
+    "explanation": "You must use a 64-bit operating system for the ePO - On-prem server and SQL Server."
+  },
+  {
+    "id": "easy_12",
+    "question": "Which of the following is NOT a type of installation workflow listed in the guide?",
+    "options": [
+      "Single server",
+      "Cloud services",
+      "Cluster",
+      "Hybrid-Mesh"
+    ],
+    "answer": "Hybrid-Mesh",
+    "difficulty": "Easy",
+    "explanation": "The guide lists Single server, Cloud services, Cluster, and Upgrade workflows."
+  },
+  {
+    "id": "easy_13",
+    "question": "When estimating SQL storage, what is the 'AveSizeOfEvent' typically multiplied by?",
+    "options": [
+      "NumSystems",
+      "NumDaysToRetain",
+      "EventsPerDay",
+      "All of the above"
+    ],
+    "answer": "All of the above",
+    "difficulty": "Easy",
+    "explanation": "The formula involves NumSystems * EventsPerDay * AveSizeOfEvent * NumDaysToRetain."
+  },
+  {
+    "id": "easy_14",
+    "question": "For deployments greater than 75,000 systems, is it recommended to have the ePO server and SQL database on the same server?",
+    "options": [
+      "Yes",
+      "Conditional",
+      "Not recommended",
+      "It doesn't matter"
+    ],
+    "answer": "Not recommended",
+    "difficulty": "Easy",
+    "explanation": "For > 75,000 systems, having ePO and SQL on the same server is 'Not recommended'."
+  },
+  {
+    "id": "easy_15",
+    "question": "What is the primary limitation on the size of the environment ePO can manage?",
+    "options": [
+      "ePO Server CPU",
+      "Network bandwidth",
+      "SQL database performance",
+      "Number of administrators"
+    ],
+    "answer": "SQL database performance",
+    "difficulty": "Easy",
+    "explanation": "The primary limitation is the SQL database performance, specifically disk performance (IOPS)."
+  },
+  {
+    "id": "easy_16",
+    "question": "What does IOPS stand for?",
+    "options": [
+      "Integrated Operations Per Second",
+      "Input/Output Operations Per Second",
+      "Internal Optimizations Per System",
+      "Intel Open Processing Standard"
+    ],
+    "answer": "Input/Output Operations Per Second",
+    "difficulty": "Easy",
+    "explanation": "IOPS stands for Input/Output Operations Per Second."
+  },
+  {
+    "id": "easy_17",
+    "question": "How many CPU cores are recommended for an Agent Handler managing 10,000–25,000 systems?",
+    "options": [
+      "2",
+      "4",
+      "8",
+      "16"
+    ],
+    "answer": "4",
+    "difficulty": "Easy",
+    "explanation": "The recommended CPU cores for an Agent Handler in this range is 4."
+  },
+  {
+    "id": "easy_18",
+    "question": "Which port-related check is part of the 'Before you can install' checklist for Single Server?",
+    "options": [
+      "Ensure SQL Server is configured for UDP access",
+      "Ensure SQL Server is configured for TCP/IP access",
+      "Ensure Port 80 is blocked",
+      "Ensure Port 443 is open to the world"
+    ],
+    "answer": "Ensure SQL Server is configured for TCP/IP access",
+    "difficulty": "Easy",
+    "explanation": "You must ensure your SQL Server is configured for TCP/IP access."
+  },
+  {
+    "id": "easy_19",
+    "question": "What is the baseline calculation for 'NumEpoCores' (ePO Server Cores)?",
+    "options": [
+      "2 + (NumSystems / 5000)",
+      "4 + (NumSystems / 10,000)",
+      "8 + (NumSystems / 20,000)",
+      "16 + (NumSystems / 100,000)"
+    ],
+    "answer": "4 + (NumSystems / 10,000)",
+    "difficulty": "Easy",
+    "explanation": "NumEpoCores = 4 + (NumSystems / SystemsPerAddlCoreEPOServer), where SystemsPerAddlCoreEPOServer is 10,000."
+  },
+  {
+    "id": "easy_20",
+    "question": "Which cloud platform is explicitly mentioned as a supported server installation option?",
+    "options": [
+      "IBM Cloud",
+      "Oracle Cloud",
+      "Amazon Web Services (AWS)",
+      "Alibaba Cloud"
+    ],
+    "answer": "Amazon Web Services (AWS)",
+    "difficulty": "Easy",
+    "explanation": "AWS (Amazon Web Services) and Azure are mentioned. AWS is a correct option here."
+  },
+  {
+    "id": "easy_21",
+    "question": "What is the recommended storage size for an ePO server managing < 10,000 nodes?",
+    "options": [
+      "100 GB",
+      "300 GB",
+      "500 GB",
+      "1 TB"
+    ],
+    "answer": "300 GB",
+    "difficulty": "Easy",
+    "explanation": "For < 10,000 nodes, the recommended storage is 300 GB."
+  },
+  {
+    "id": "easy_22",
+    "question": "Does ePO support virtual infrastructure software?",
+    "options": [
+      "Yes",
+      "No",
+      "Only for SQL Server",
+      "Only for Agent Handlers"
+    ],
+    "answer": "Yes",
+    "difficulty": "Easy",
+    "explanation": "The guide includes a section on 'Supported virtual infrastructure software', indicating support."
+  },
+  {
+    "id": "easy_23",
+    "question": "To manage more systems, can you add distributed repositories?",
+    "options": [
+      "Yes",
+      "No, only Agent Handlers",
+      "No, only SQL Cores",
+      "No"
+    ],
+    "answer": "Yes",
+    "difficulty": "Easy",
+    "explanation": "You can scale the SQL database, add distributed repositories, and add Agent Handlers."
+  },
+  {
+    "id": "easy_24",
+    "question": "What tool checks for compliance issues before installation?",
+    "options": [
+      "ePO Post-Installation Auditor",
+      "ePO Pre-Installation Auditor",
+      "Trellix Compliance Checker",
+      "SQL Server Validator"
+    ],
+    "answer": "ePO Pre-Installation Auditor",
+    "difficulty": "Easy",
+    "explanation": "The ePO - On-prem Pre-Installation Auditor checks for compliance issues."
+  },
+  {
+    "id": "easy_25",
+    "question": "For > 75,000 systems, are distributed repositories required?",
+    "options": [
+      "Not required",
+      "Conditional",
+      "Yes",
+      "Only if using Cloud"
+    ],
+    "answer": "Yes",
+    "difficulty": "Easy",
+    "explanation": "For > 75,000 systems, the column for 'Add distributed repositories' says 'Yes'."
+  }
+]
