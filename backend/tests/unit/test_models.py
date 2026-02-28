@@ -6,10 +6,8 @@ from pydantic import ValidationError
 from app.models.schemas import (
     AnswerSubmission,
     CategoryCreate,
-    CategoryResponse,
     DifficultyEnum,
     OptionBase,
-    QuestionBase,
     QuestionPublic,
     QuizConfig,
 )

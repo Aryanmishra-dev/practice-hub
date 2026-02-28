@@ -6,21 +6,33 @@ Separates data-loading logic from API routes and business logic.
 import json
 import random
 from pathlib import Path
-from typing import Optional
 
 from app.core.logging import get_logger
 
 logger = get_logger("repositories.quiz")
 
-# Path to quiz JSON files (relative to project root)
-PROJECT_ROOT = Path(__file__).parent.parent.parent.parent
+# Path to quiz JSON files
+# In local dev: files are at the project root (../../.. from this file)
+# In Docker: files are copied to /app/data/
+_PACKAGE_ROOT = Path(__file__).parent.parent.parent  # backend/
+_PROJECT_ROOT = _PACKAGE_ROOT.parent  # QUIZ-FORGE/
+_DATA_DIR = _PACKAGE_ROOT / "data"  # backend/data/
+
+
+def _resolve_data_file(filename: str) -> Path:
+    """Find quiz data file, checking Docker path first, then project root."""
+    docker_path = _DATA_DIR / filename
+    if docker_path.exists():
+        return docker_path
+    return _PROJECT_ROOT / filename
+
 
 QUIZ_FILES: dict[str, Path] = {
-    "easy": PROJECT_ROOT / "quiz_easy.json",
-    "normal": PROJECT_ROOT / "quiz_normal.json",
-    "hard": PROJECT_ROOT / "quiz_hard.json",
-    "expert": PROJECT_ROOT / "quiz_expert.json",
-    "all": PROJECT_ROOT / "quiz_bank.json",
+    "easy": _resolve_data_file("quiz_easy.json"),
+    "normal": _resolve_data_file("quiz_normal.json"),
+    "hard": _resolve_data_file("quiz_hard.json"),
+    "expert": _resolve_data_file("quiz_expert.json"),
+    "all": _resolve_data_file("quiz_bank.json"),
 }
 
 DIFFICULTY_FILE_MAP: dict[str, str] = {
@@ -69,7 +81,7 @@ class QuizRepository:
             categories.append(cat_copy)
         return categories
 
-    def get_category_by_id(self, category_id: str) -> Optional[dict]:
+    def get_category_by_id(self, category_id: str) -> dict | None:
         """Get a single category by ID.
 
         Args:
@@ -85,7 +97,7 @@ class QuizRepository:
                 return cat_copy
         return None
 
-    def load_questions_from_file(self, difficulty: Optional[str] = None) -> list[dict]:
+    def load_questions_from_file(self, difficulty: str | None = None) -> list[dict]:
         """Load raw questions from JSON files.
 
         Args:
@@ -99,13 +111,13 @@ class QuizRepository:
         if difficulty and difficulty in QUIZ_FILES:
             file_path = QUIZ_FILES[difficulty]
             if file_path.exists():
-                with open(file_path) as f:
+                with file_path.open() as f:
                     data = json.load(f)
                     questions.extend(data)
         else:
             for diff, file_path in QUIZ_FILES.items():
                 if diff != "all" and file_path.exists():
-                    with open(file_path) as f:
+                    with file_path.open() as f:
                         data = json.load(f)
                         questions.extend(data)
 
@@ -122,8 +134,7 @@ class QuizRepository:
             Transformed question dict with standardized fields.
         """
         options = [
-            {"id": chr(65 + i), "text": opt_text}
-            for i, opt_text in enumerate(q.get("options", []))
+            {"id": chr(65 + i), "text": opt_text} for i, opt_text in enumerate(q.get("options", []))
         ]
 
         correct_answer = q.get("answer", "")
@@ -149,7 +160,7 @@ class QuizRepository:
     def get_questions(
         self,
         category_id: str,
-        difficulty: Optional[str] = None,
+        difficulty: str | None = None,
         limit: int = 50,
         shuffle: bool = True,
     ) -> list[dict]:
@@ -174,7 +185,7 @@ class QuizRepository:
 
         return questions[:limit]
 
-    def get_question_by_id(self, question_id: str) -> Optional[dict]:
+    def get_question_by_id(self, question_id: str) -> dict | None:
         """Find a single question by its ID.
 
         Args:

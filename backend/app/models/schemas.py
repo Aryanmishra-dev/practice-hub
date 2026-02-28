@@ -1,10 +1,11 @@
-from pydantic import BaseModel, Field, validator
-from typing import Optional, List, Any
 from datetime import datetime
-from enum import Enum
+from enum import StrEnum
+from typing import Any
+
+from pydantic import BaseModel, Field, field_validator
 
 
-class DifficultyEnum(str, Enum):
+class DifficultyEnum(StrEnum):
     easy = "easy"
     medium = "medium"
     hard = "hard"
@@ -12,6 +13,7 @@ class DifficultyEnum(str, Enum):
 
 
 # ============= Option Models =============
+
 
 class OptionBase(BaseModel):
     id: str
@@ -24,10 +26,11 @@ class OptionCreate(OptionBase):
 
 # ============= Category Models =============
 
+
 class CategoryBase(BaseModel):
     name: str = Field(..., min_length=1, max_length=100)
-    description: Optional[str] = None
-    icon: Optional[str] = None
+    description: str | None = None
+    icon: str | None = None
     display_order: int = 0
 
 
@@ -36,17 +39,17 @@ class CategoryCreate(CategoryBase):
 
 
 class CategoryUpdate(BaseModel):
-    name: Optional[str] = Field(None, min_length=1, max_length=100)
-    description: Optional[str] = None
-    icon: Optional[str] = None
-    display_order: Optional[int] = None
-    is_active: Optional[bool] = None
+    name: str | None = Field(None, min_length=1, max_length=100)
+    description: str | None = None
+    icon: str | None = None
+    display_order: int | None = None
+    is_active: bool | None = None
 
 
 class CategoryResponse(CategoryBase):
     id: str
     is_active: bool
-    question_count: Optional[int] = None
+    question_count: int | None = None
     created_at: datetime
     updated_at: datetime
 
@@ -56,19 +59,21 @@ class CategoryResponse(CategoryBase):
 
 # ============= Question Models =============
 
+
 class QuestionBase(BaseModel):
     category_id: str
     difficulty: DifficultyEnum
     question_text: str = Field(..., min_length=10)
-    options: List[OptionBase] = Field(..., min_length=2)
+    options: list[OptionBase] = Field(..., min_length=2)
     correct_option: str
-    explanation: Optional[str] = None
-    tags: Optional[List[str]] = []
+    explanation: str | None = None
+    tags: list[str] | None = []
 
-    @validator("correct_option")
-    def validate_correct_option(cls, v, values):
-        if "options" in values:
-            option_ids = [opt.id for opt in values["options"]]
+    @field_validator("correct_option")
+    @classmethod
+    def validate_correct_option(cls, v: str, info: Any) -> str:  # noqa: N805
+        if "options" in info.data:
+            option_ids = [opt.id for opt in info.data["options"]]
             if v not in option_ids:
                 raise ValueError(f"correct_option must be one of {option_ids}")
         return v
@@ -79,14 +84,14 @@ class QuestionCreate(QuestionBase):
 
 
 class QuestionUpdate(BaseModel):
-    category_id: Optional[str] = None
-    difficulty: Optional[DifficultyEnum] = None
-    question_text: Optional[str] = Field(None, min_length=10)
-    options: Optional[List[OptionBase]] = None
-    correct_option: Optional[str] = None
-    explanation: Optional[str] = None
-    tags: Optional[List[str]] = None
-    is_active: Optional[bool] = None
+    category_id: str | None = None
+    difficulty: DifficultyEnum | None = None
+    question_text: str | None = Field(None, min_length=10)
+    options: list[OptionBase] | None = None
+    correct_option: str | None = None
+    explanation: str | None = None
+    tags: list[str] | None = None
+    is_active: bool | None = None
 
 
 class QuestionResponse(QuestionBase):
@@ -102,12 +107,13 @@ class QuestionResponse(QuestionBase):
 
 class QuestionPublic(BaseModel):
     """Public question response (hides correct answer)."""
+
     id: str
     category_id: str
     difficulty: DifficultyEnum
     question_text: str
-    options: List[OptionBase]
-    tags: Optional[List[str]] = []
+    options: list[OptionBase]
+    tags: list[str] | None = []
 
     class Config:
         from_attributes = True
@@ -115,11 +121,12 @@ class QuestionPublic(BaseModel):
 
 # ============= Quiz Models =============
 
+
 class QuizConfig(BaseModel):
     category_id: str
-    difficulty: Optional[str] = None  # Can be "mixed" or a specific difficulty
+    difficulty: str | None = None  # Can be "mixed" or a specific difficulty
     question_count: int = Field(default=10, ge=1, le=50)
-    time_limit_seconds: Optional[int] = None
+    time_limit_seconds: int | None = None
     exclude_answered: bool = False
 
     model_config = {
@@ -139,7 +146,7 @@ class QuizConfig(BaseModel):
 
 class QuizStartResponse(BaseModel):
     session_id: str
-    questions: List[QuestionPublic]
+    questions: list[QuestionPublic]
 
 
 class AnswerSubmission(BaseModel):
@@ -163,7 +170,7 @@ class AnswerSubmission(BaseModel):
 class AnswerResult(BaseModel):
     is_correct: bool
     correct_option: str
-    explanation: Optional[str]
+    explanation: str | None
 
 
 class DifficultyStats(BaseModel):
@@ -179,15 +186,16 @@ class QuizResult(BaseModel):
     total_time_seconds: int
     average_time_per_question: float
     difficulty_breakdown: dict[str, DifficultyStats]
-    weak_areas: List[str]
-    recommendations: List[str]
+    weak_areas: list[str]
+    recommendations: list[str]
 
 
 # ============= User Models =============
 
+
 class UserBase(BaseModel):
     email: str
-    full_name: Optional[str] = None
+    full_name: str | None = None
 
 
 class UserCreate(UserBase):
@@ -196,7 +204,7 @@ class UserCreate(UserBase):
 
 class UserResponse(UserBase):
     id: str
-    avatar_url: Optional[str] = None
+    avatar_url: str | None = None
     role: str = "user"
     created_at: datetime
 
@@ -206,17 +214,18 @@ class UserResponse(UserBase):
 
 # ============= User Stats Models =============
 
+
 class UserStatsResponse(BaseModel):
     id: str
     user_id: str
-    category_id: Optional[str]
-    category_name: Optional[str]
-    difficulty: Optional[str]
+    category_id: str | None
+    category_name: str | None
+    difficulty: str | None
     total_attempts: int
     correct_attempts: int
     accuracy: float
-    avg_time_seconds: Optional[float]
-    last_practiced_at: Optional[datetime]
+    avg_time_seconds: float | None
+    last_practiced_at: datetime | None
 
     class Config:
         from_attributes = True
@@ -229,10 +238,10 @@ class UserProgressResponse(BaseModel):
     current_streak: int
     longest_streak: int
     categories_practiced: int
-    favorite_category: Optional[str]
+    favorite_category: str | None
     improvement_trend: str
     last_7_days_accuracy: float
-    stats_by_category: List[UserStatsResponse]
+    stats_by_category: list[UserStatsResponse]
     stats_by_difficulty: dict[str, dict]
 
 
@@ -240,15 +249,16 @@ class RecommendationResponse(BaseModel):
     recommended_category: str
     recommended_difficulty: str
     reason: str
-    estimated_improvement: Optional[str] = None
+    estimated_improvement: str | None = None
 
 
 # ============= Admin Models =============
 
+
 class BulkUploadResult(BaseModel):
     success_count: int
     error_count: int
-    errors: List[dict]
+    errors: list[dict]
 
 
 class AdminStatsResponse(BaseModel):
@@ -263,8 +273,9 @@ class AdminStatsResponse(BaseModel):
 
 # ============= Pagination Models =============
 
+
 class PaginatedResponse(BaseModel):
-    items: List[Any]
+    items: list[Any]
     total: int
     page: int
     page_size: int
@@ -272,6 +283,7 @@ class PaginatedResponse(BaseModel):
 
 
 # ============= Quiz History Models =============
+
 
 class QuizHistoryItem(BaseModel):
     id: str

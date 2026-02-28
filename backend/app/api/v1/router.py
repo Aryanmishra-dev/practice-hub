@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.v1 import questions, quiz, user, admin
+from app.api.v1 import admin, questions, quiz, user
 
 api_router = APIRouter()
 

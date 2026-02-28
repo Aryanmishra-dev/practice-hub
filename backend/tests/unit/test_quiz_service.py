@@ -1,12 +1,11 @@
 """Unit tests for quiz service / data loading logic."""
 
-import pytest
+from app.repositories.quiz_repository import CATEGORIES, QuizRepository
 
-from app.api.v1.questions import (
-    CATEGORIES,
-    load_questions_from_file,
-    transform_question,
-)
+# Create a repository instance for test use
+_repo = QuizRepository()
+load_questions_from_file = _repo.load_questions_from_file
+transform_question = _repo.transform_question
 
 
 class TestLoadQuestionsFromFile:

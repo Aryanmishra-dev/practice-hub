@@ -1,14 +1,16 @@
+"""User progress and analytics endpoints (mock data)."""
+
+import random  # noqa: S311 — used for mock data, not cryptography
+from datetime import UTC, datetime, timedelta
+
 from fastapi import APIRouter, Query
-from typing import Optional
-from datetime import datetime, timedelta
-import random
 
 from app.models.schemas import (
+    PaginatedResponse,
+    QuizHistoryItem,
+    RecommendationResponse,
     UserProgressResponse,
     UserStatsResponse,
-    RecommendationResponse,
-    QuizHistoryItem,
-    PaginatedResponse,
 )
 
 router = APIRouter()
@@ -16,19 +18,18 @@ router = APIRouter()
 GUEST_USER_ID = "guest"
 
 
-# Mock user data (no auth required)
 def generate_mock_progress() -> UserProgressResponse:
     """Generate mock progress data."""
     return UserProgressResponse(
-        total_questions_answered=random.randint(50, 200),
-        overall_accuracy=round(random.uniform(60, 90), 2),
-        total_time_spent_seconds=random.randint(3600, 14400),
-        current_streak=random.randint(1, 14),
-        longest_streak=random.randint(7, 30),
+        total_questions_answered=random.randint(50, 200),  # noqa: S311
+        overall_accuracy=round(random.uniform(60, 90), 2),  # noqa: S311
+        total_time_spent_seconds=random.randint(3600, 14400),  # noqa: S311
+        current_streak=random.randint(1, 14),  # noqa: S311
+        longest_streak=random.randint(7, 30),  # noqa: S311
         categories_practiced=1,
         favorite_category="ePO Server Administration",
-        improvement_trend=random.choice(["improving", "stable", "declining"]),
-        last_7_days_accuracy=round(random.uniform(65, 95), 2),
+        improvement_trend=random.choice(["improving", "stable", "declining"]),  # noqa: S311
+        last_7_days_accuracy=round(random.uniform(65, 95), 2),  # noqa: S311
         stats_by_category=[
             UserStatsResponse(
                 id="stat_1",
@@ -36,11 +37,11 @@ def generate_mock_progress() -> UserProgressResponse:
                 category_id="epo",
                 category_name="ePO Server Administration",
                 difficulty=None,
-                total_attempts=random.randint(50, 150),
-                correct_attempts=random.randint(30, 100),
-                accuracy=round(random.uniform(60, 90), 2),
-                avg_time_seconds=round(random.uniform(20, 60), 2),
-                last_practiced_at=datetime.utcnow(),
+                total_attempts=random.randint(50, 150),  # noqa: S311
+                correct_attempts=random.randint(30, 100),  # noqa: S311
+                accuracy=round(random.uniform(60, 90), 2),  # noqa: S311
+                avg_time_seconds=round(random.uniform(20, 60), 2),  # noqa: S311
+                last_practiced_at=datetime.now(UTC),
             )
         ],
         stats_by_difficulty={
@@ -56,12 +57,12 @@ def generate_mock_history(limit: int = 10) -> list:
     """Generate mock quiz history."""
     history = []
     difficulties = ["easy", "medium", "hard", "expert"]
-    
+
     for i in range(limit):
-        difficulty = random.choice(difficulties)
+        difficulty = random.choice(difficulties)  # noqa: S311
         total = 10
-        score = random.randint(4, 10)
-        
+        score = random.randint(4, 10)  # noqa: S311
+
         history.append(
             QuizHistoryItem(
                 id=f"quiz_{i}",
@@ -70,10 +71,10 @@ def generate_mock_history(limit: int = 10) -> list:
                 score=score,
                 total_questions=total,
                 accuracy=round((score / total) * 100, 2),
-                completed_at=datetime.utcnow() - timedelta(days=i),
+                completed_at=datetime.now(UTC) - timedelta(days=i),
             )
         )
-    
+
     return history
 
 
@@ -100,9 +101,9 @@ async def get_user_history(
 ):
     """Get quiz history (mock data)."""
     all_history = generate_mock_history(limit=50)
-    
+
     paginated = all_history[offset : offset + limit]
-    
+
     return PaginatedResponse(
         items=paginated,
         total=len(all_history),
@@ -135,5 +136,5 @@ async def get_recommendations():
             estimated_improvement="Review explanations for previously missed questions",
         ),
     ]
-    
-    return random.choice(recommendations)
+
+    return random.choice(recommendations)  # noqa: S311

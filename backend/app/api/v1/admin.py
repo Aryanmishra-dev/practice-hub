@@ -1,21 +1,41 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
-from typing import List, Optional
 import json
 from pathlib import Path
 
-from app.models.schemas import (
-    QuestionCreate,
-    QuestionUpdate,
-    QuestionResponse,
-    CategoryCreate,
-    CategoryResponse,
-    BulkUploadResult,
-    AdminStatsResponse,
-    PaginatedResponse,
-)
+from fastapi import APIRouter, Depends, HTTPException, Query
+
 from app.core.security import get_current_admin_user
+from app.models.schemas import (
+    AdminStatsResponse,
+    BulkUploadResult,
+    CategoryCreate,
+    PaginatedResponse,
+    QuestionCreate,
+    QuestionResponse,
+    QuestionUpdate,
+)
 
 router = APIRouter()
+
+# Path to quiz JSON data files
+_PACKAGE_ROOT = Path(__file__).parent.parent.parent  # backend/
+_PROJECT_ROOT = _PACKAGE_ROOT.parent  # QUIZ-FORGE/
+_DATA_DIR = _PACKAGE_ROOT / "data"  # backend/data/
+
+
+def _resolve_data_file(filename: str) -> Path:
+    """Find quiz data file, checking Docker path first, then project root."""
+    docker_path = _DATA_DIR / filename
+    if docker_path.exists():
+        return docker_path
+    return _PROJECT_ROOT / filename
+
+
+_DIFFICULTY_FILES: dict[str, Path] = {
+    "easy": _resolve_data_file("quiz_easy.json"),
+    "medium": _resolve_data_file("quiz_normal.json"),
+    "hard": _resolve_data_file("quiz_hard.json"),
+    "expert": _resolve_data_file("quiz_expert.json"),
+}
 
 # In-memory storage for demo (in production, use database)
 questions_db: dict = {}
@@ -36,27 +56,17 @@ async def get_admin_stats(
     current_user: dict = Depends(get_current_admin_user),
 ):
     """Get admin dashboard statistics."""
-    # Load questions from files to get accurate counts
-    PROJECT_ROOT = Path(__file__).parent.parent.parent.parent.parent
-    
     total_questions = 0
     questions_by_difficulty = {"easy": 0, "medium": 0, "hard": 0, "expert": 0}
-    
-    difficulty_files = {
-        "easy": PROJECT_ROOT / "quiz_easy.json",
-        "medium": PROJECT_ROOT / "quiz_normal.json",
-        "hard": PROJECT_ROOT / "quiz_hard.json",
-        "expert": PROJECT_ROOT / "quiz_expert.json",
-    }
-    
-    for diff, file_path in difficulty_files.items():
+
+    for diff, file_path in _DIFFICULTY_FILES.items():
         if file_path.exists():
-            with open(file_path, "r") as f:
+            with file_path.open() as f:
                 data = json.load(f)
                 count = len(data)
                 total_questions += count
                 questions_by_difficulty[diff] = count
-    
+
     return AdminStatsResponse(
         total_questions=total_questions,
         total_categories=len(categories_db),
@@ -70,13 +80,13 @@ async def get_admin_stats(
 
 @router.post("/admin/categories/bulk", response_model=BulkUploadResult)
 async def bulk_upload_categories(
-    categories: List[CategoryCreate],
+    categories: list[CategoryCreate],
     current_user: dict = Depends(get_current_admin_user),
 ):
     """Bulk upload categories."""
     success_count = 0
     errors = []
-    
+
     for i, category in enumerate(categories):
         try:
             cat_id = category.name.lower().replace(" ", "_")
@@ -88,7 +98,7 @@ async def bulk_upload_categories(
             success_count += 1
         except Exception as e:
             errors.append({"row": i + 1, "message": str(e)})
-    
+
     return BulkUploadResult(
         success_count=success_count,
         error_count=len(errors),
@@ -98,13 +108,13 @@ async def bulk_upload_categories(
 
 @router.post("/admin/questions/bulk", response_model=BulkUploadResult)
 async def bulk_upload_questions(
-    questions: List[QuestionCreate],
+    questions: list[QuestionCreate],
     current_user: dict = Depends(get_current_admin_user),
 ):
     """Bulk upload questions."""
     success_count = 0
     errors = []
-    
+
     for i, question in enumerate(questions):
         try:
             q_id = f"q_{len(questions_db) + 1}"
@@ -117,7 +127,7 @@ async def bulk_upload_questions(
             success_count += 1
         except Exception as e:
             errors.append({"row": i + 1, "message": str(e)})
-    
+
     return BulkUploadResult(
         success_count=success_count,
         error_count=len(errors),
@@ -129,39 +139,34 @@ async def bulk_upload_questions(
 async def get_all_questions(
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
-    category_id: Optional[str] = None,
-    difficulty: Optional[str] = None,
+    category_id: str | None = None,
+    difficulty: str | None = None,
     current_user: dict = Depends(get_current_admin_user),
 ):
     """Get all questions (admin view with pagination)."""
-    # Load from files
-    PROJECT_ROOT = Path(__file__).parent.parent.parent.parent.parent
     all_questions = []
-    
-    files = [
-        PROJECT_ROOT / "quiz_easy.json",
-        PROJECT_ROOT / "quiz_normal.json",
-        PROJECT_ROOT / "quiz_hard.json",
-        PROJECT_ROOT / "quiz_expert.json",
-    ]
-    
-    for file_path in files:
+
+    for file_path in _DIFFICULTY_FILES.values():
         if file_path.exists():
-            with open(file_path, "r") as f:
+            with file_path.open() as f:
                 data = json.load(f)
                 all_questions.extend(data)
-    
+
     # Filter
     if difficulty:
         difficulty_map = {"easy": "Easy", "medium": "Normal", "hard": "Hard", "expert": "Expert"}
-        all_questions = [q for q in all_questions if q.get("difficulty") == difficulty_map.get(difficulty, difficulty)]
-    
+        all_questions = [
+            q
+            for q in all_questions
+            if q.get("difficulty") == difficulty_map.get(difficulty, difficulty)
+        ]
+
     # Paginate
     total = len(all_questions)
     start = (page - 1) * page_size
     end = start + page_size
     paginated = all_questions[start:end]
-    
+
     return PaginatedResponse(
         items=paginated,
         total=total,
@@ -180,15 +185,15 @@ async def update_question(
     """Update a question."""
     if question_id not in questions_db:
         raise HTTPException(status_code=404, detail="Question not found")
-    
+
     question = questions_db[question_id]
     update_data = update.model_dump(exclude_unset=True)
-    
+
     for key, value in update_data.items():
         question[key] = value
-    
+
     question["version"] = question.get("version", 1) + 1
-    
+
     return question
 
 
@@ -200,7 +205,7 @@ async def delete_question(
     """Soft delete a question."""
     if question_id not in questions_db:
         raise HTTPException(status_code=404, detail="Question not found")
-    
+
     questions_db[question_id]["is_active"] = False
-    
+
     return {"message": "Question deleted successfully"}

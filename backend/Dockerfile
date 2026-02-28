@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-COPY pyproject.toml ./
+COPY backend/pyproject.toml ./
 
 # Install Python dependencies into a virtual env
 RUN python -m venv /opt/venv
@@ -32,7 +32,11 @@ ENV PATH="/opt/venv/bin:$PATH" \
     PYTHONDONTWRITEBYTECODE=1
 
 # Copy application code
-COPY --chown=appuser:appuser . .
+COPY --chown=appuser:appuser backend/ .
+
+# Copy quiz data files into backend/data/
+RUN mkdir -p data
+COPY --chown=appuser:appuser quiz_*.json data/
 
 # Switch to non-root user
 USER appuser

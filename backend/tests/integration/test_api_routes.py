@@ -94,9 +94,7 @@ class TestQuizEndpoints:
     """Tests for /api/v1/quiz/* endpoints."""
 
     @pytest.mark.integration
-    async def test_start_quiz(
-        self, async_client: AsyncClient, sample_quiz_config: dict
-    ) -> None:
+    async def test_start_quiz(self, async_client: AsyncClient, sample_quiz_config: dict) -> None:
         """POST /quiz/start creates a session and returns questions."""
         response = await async_client.post("/api/v1/quiz/start", json=sample_quiz_config)
         assert response.status_code == 200
@@ -106,9 +104,7 @@ class TestQuizEndpoints:
         assert len(data["questions"]) == sample_quiz_config["question_count"]
 
     @pytest.mark.integration
-    async def test_submit_answer(
-        self, async_client: AsyncClient, sample_quiz_config: dict
-    ) -> None:
+    async def test_submit_answer(self, async_client: AsyncClient, sample_quiz_config: dict) -> None:
         """POST /quiz/submit grades an answer correctly."""
         # Start a quiz to get a valid question ID
         start_resp = await async_client.post("/api/v1/quiz/start", json=sample_quiz_config)
@@ -127,9 +123,7 @@ class TestQuizEndpoints:
         assert "correct_option" in data
 
     @pytest.mark.integration
-    async def test_complete_quiz(
-        self, async_client: AsyncClient, sample_quiz_config: dict
-    ) -> None:
+    async def test_complete_quiz(self, async_client: AsyncClient, sample_quiz_config: dict) -> None:
         """POST /quiz/:session_id/complete returns quiz results."""
         # Start a quiz
         start_resp = await async_client.post("/api/v1/quiz/start", json=sample_quiz_config)
@@ -158,9 +152,9 @@ class TestQuizEndpoints:
 
     @pytest.mark.integration
     async def test_complete_invalid_session(self, async_client: AsyncClient) -> None:
-        """Completing a non-existent session returns 404."""
+        """Completing a non-existent session returns 400."""
         response = await async_client.post("/api/v1/quiz/invalid_session/complete")
-        assert response.status_code == 404
+        assert response.status_code == 400
 
 
 class TestUserEndpoints:

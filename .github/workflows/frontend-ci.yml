@@ -91,4 +91,9 @@ jobs:
         run: npm run build
 
       - name: Docker build
-        run: docker build -t quiz-forge-frontend:test .
+        run: |
+          docker build \
+            --build-arg NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL \
+            --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY \
+            --build-arg NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL \
+            -t quiz-forge-frontend:test .

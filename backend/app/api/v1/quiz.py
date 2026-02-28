@@ -7,12 +7,12 @@ QuizService for all business logic via dependency injection.
 from fastapi import APIRouter, Depends
 
 from app.models.schemas import (
-    QuizConfig,
-    QuizStartResponse,
-    AnswerSubmission,
     AnswerResult,
-    QuizResult,
+    AnswerSubmission,
     DifficultyStats,
+    QuizConfig,
+    QuizResult,
+    QuizStartResponse,
 )
 from app.repositories.quiz_repository import QuizRepository
 from app.services.quiz_service import QuizService
@@ -75,8 +75,7 @@ async def complete_quiz(
         total_time_seconds=result["total_time_seconds"],
         average_time_per_question=result["average_time_per_question"],
         difficulty_breakdown={
-            k: DifficultyStats(**v)
-            for k, v in result["difficulty_breakdown"].items()
+            k: DifficultyStats(**v) for k, v in result["difficulty_breakdown"].items()
         },
         weak_areas=result["weak_areas"],
         recommendations=result["recommendations"],

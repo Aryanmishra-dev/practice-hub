@@ -1,22 +1,21 @@
 """Quiz Forge — FastAPI application entry point."""
 
-import time
-from contextlib import asynccontextmanager
 from collections.abc import AsyncGenerator
+from contextlib import asynccontextmanager
 from typing import Any
 
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 
+from app.api.v1.router import api_router
 from app.core.config import get_settings
-from app.core.logging import setup_logging, get_logger
 from app.core.exceptions import register_exception_handlers
-from app.middleware.request_id import RequestIDMiddleware
+from app.core.logging import get_logger, setup_logging
 from app.middleware.api_version import APIVersionMiddleware
 from app.middleware.rate_limiter import limiter
-from app.api.v1.router import api_router
+from app.middleware.request_id import RequestIDMiddleware
 
 settings = get_settings()
 root_logger = setup_logging()
@@ -55,7 +54,7 @@ app = FastAPI(
 
 # Rate limiter
 app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)  # type: ignore[arg-type]
 
 # Request ID
 app.add_middleware(RequestIDMiddleware)
@@ -94,6 +93,7 @@ except ImportError:
 
 
 # ============= Health Check =============
+
 
 @app.get("/health", tags=["health"])
 async def health_check() -> dict[str, Any]:

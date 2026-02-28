@@ -4,8 +4,7 @@ Contains quiz session management, answer grading, and result calculation.
 """
 
 import uuid
-from datetime import datetime, timezone
-from typing import Optional
+from datetime import UTC, datetime
 
 from app.core.exceptions import NotFoundError, QuizSessionError
 from app.core.logging import get_logger
@@ -16,10 +15,10 @@ logger = get_logger("services.quiz")
 # Import custom Prometheus metrics (optional — graceful if not available)
 try:
     from app.core.metrics import (
-        QUIZ_SESSIONS_STARTED,
         ANSWERS_GRADED,
-        QUIZ_SCORE_DISTRIBUTION,
         QUESTION_RESPONSE_TIME,
+        QUIZ_SCORE_DISTRIBUTION,
+        QUIZ_SESSIONS_STARTED,
     )
 
     _METRICS_AVAILABLE = True
@@ -64,7 +63,7 @@ class QuizService:
     def get_questions(
         self,
         category_id: str,
-        difficulty: Optional[str] = None,
+        difficulty: str | None = None,
         limit: int = 50,
     ) -> list[dict]:
         """Get questions for a category.
@@ -99,7 +98,7 @@ class QuizService:
     def start_quiz(
         self,
         category_id: str,
-        difficulty: Optional[str] = None,
+        difficulty: str | None = None,
         question_count: int = 10,
     ) -> dict:
         """Start a new quiz session.
@@ -136,7 +135,7 @@ class QuizService:
             "difficulty": difficulty,
             "questions": questions,
             "answers": {},
-            "started_at": datetime.now(timezone.utc).isoformat(),
+            "started_at": datetime.now(UTC).isoformat(),
             "completed_at": None,
         }
 
@@ -213,7 +212,7 @@ class QuizService:
                 "selected_option": selected_option,
                 "is_correct": is_correct,
                 "time_taken_seconds": time_taken_seconds,
-                "answered_at": datetime.now(timezone.utc).isoformat(),
+                "answered_at": datetime.now(UTC).isoformat(),
             }
 
         return {
@@ -238,7 +237,7 @@ class QuizService:
             raise QuizSessionError(f"Quiz session not found: {session_id}")
 
         session = quiz_sessions[session_id]
-        session["completed_at"] = datetime.now(timezone.utc).isoformat()
+        session["completed_at"] = datetime.now(UTC).isoformat()
 
         questions = session["questions"]
         answers = session["answers"]
@@ -279,7 +278,9 @@ class QuizService:
             (correct_answers / total_questions * 100) if total_questions > 0 else 0,
         )
 
-        score_pct = round((correct_answers / total_questions) * 100, 2) if total_questions > 0 else 0
+        score_pct = (
+            round((correct_answers / total_questions) * 100, 2) if total_questions > 0 else 0
+        )
         if _METRICS_AVAILABLE:
             QUIZ_SCORE_DISTRIBUTION.observe(score_pct)
 
@@ -289,7 +290,9 @@ class QuizService:
             "correct_answers": correct_answers,
             "accuracy": score_pct,
             "total_time_seconds": total_time,
-            "average_time_per_question": round(total_time / total_questions, 2) if total_questions > 0 else 0,
+            "average_time_per_question": round(total_time / total_questions, 2)
+            if total_questions > 0
+            else 0,
             "difficulty_breakdown": difficulty_breakdown,
             "weak_areas": weak_areas,
             "recommendations": recommendations,

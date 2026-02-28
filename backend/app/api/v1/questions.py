@@ -3,8 +3,6 @@
 Uses the QuizService for all business logic via dependency injection.
 """
 
-from typing import Optional
-
 from fastapi import APIRouter, Depends, Query
 
 from app.models.schemas import CategoryResponse, QuestionResponse
@@ -39,7 +37,7 @@ async def get_category(
 @router.get("/categories/{category_id}/questions")
 async def get_category_questions(
     category_id: str,
-    difficulty: Optional[str] = Query(None, description="Filter by difficulty"),
+    difficulty: str | None = Query(None, description="Filter by difficulty"),
     limit: int = Query(50, ge=1, le=100, description="Number of questions to return"),
     service: QuizService = Depends(get_quiz_service),
 ):

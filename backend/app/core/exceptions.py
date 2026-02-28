@@ -13,7 +13,7 @@ logger = get_logger("exceptions")
 # ============= Custom Exceptions =============
 
 
-class QuizForgeException(Exception):
+class QuizForgeError(Exception):
     """Base exception for all Quiz Forge errors."""
 
     def __init__(self, message: str, status_code: int = 500, detail: Any = None) -> None:
@@ -23,7 +23,7 @@ class QuizForgeException(Exception):
         super().__init__(message)
 
 
-class NotFoundError(QuizForgeException):
+class NotFoundError(QuizForgeError):
     """Resource not found."""
 
     def __init__(self, resource: str, resource_id: str) -> None:
@@ -33,14 +33,14 @@ class NotFoundError(QuizForgeException):
         )
 
 
-class ValidationError(QuizForgeException):
+class ValidationError(QuizForgeError):
     """Validation error."""
 
     def __init__(self, message: str, detail: Any = None) -> None:
         super().__init__(message=message, status_code=422, detail=detail)
 
 
-class QuizSessionError(QuizForgeException):
+class QuizSessionError(QuizForgeError):
     """Quiz session error."""
 
     def __init__(self, message: str) -> None:
@@ -57,11 +57,9 @@ def register_exception_handlers(app: FastAPI) -> None:
         app: The FastAPI application instance.
     """
 
-    @app.exception_handler(QuizForgeException)
-    async def quiz_forge_exception_handler(
-        request: Request, exc: QuizForgeException
-    ) -> JSONResponse:
-        logger.error("QuizForgeException: %s (status=%d)", exc.message, exc.status_code)
+    @app.exception_handler(QuizForgeError)
+    async def quiz_forge_exception_handler(request: Request, exc: QuizForgeError) -> JSONResponse:
+        logger.error("QuizForgeError: %s (status=%d)", exc.message, exc.status_code)
         return JSONResponse(
             status_code=exc.status_code,
             content={
