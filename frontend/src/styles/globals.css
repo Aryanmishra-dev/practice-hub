@@ -90,11 +90,11 @@
   }
   
   .quiz-option.correct {
-    @apply border-green-500 bg-green-50;
+    @apply border-green-500 bg-green-50 dark:bg-green-950/30 dark:border-green-600;
   }
   
   .quiz-option.incorrect {
-    @apply border-red-500 bg-red-50;
+    @apply border-red-500 bg-red-50 dark:bg-red-950/30 dark:border-red-600;
   }
   
   .quiz-option.disabled {

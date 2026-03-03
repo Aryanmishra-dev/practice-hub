@@ -32,49 +32,48 @@ export function Footer() {
                   View Progress
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Platform */}
+          <div>
+            <h3 className="font-semibold mb-4">Platform</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link href="/settings" className="hover:text-foreground transition-colors">
-                  Settings
-                </Link>
+                <span className="text-muted-foreground/60">4 Difficulty Levels</span>
+              </li>
+              <li>
+                <span className="text-muted-foreground/60">100+ Questions</span>
+              </li>
+              <li>
+                <span className="text-muted-foreground/60">Instant Feedback</span>
               </li>
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Open Source */}
           <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
+            <h3 className="font-semibold mb-4">Open Source</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link href="/help" className="hover:text-foreground transition-colors">
-                  Help Center
-                </Link>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors"
+                >
+                  GitHub Repo
+                </a>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-foreground transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-foreground transition-colors">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <Link href="/privacy" className="hover:text-foreground transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-foreground transition-colors">
-                  Terms of Service
-                </Link>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors"
+                >
+                  Report an Issue
+                </a>
               </li>
             </ul>
           </div>

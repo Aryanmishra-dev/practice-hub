@@ -95,16 +95,18 @@ export function QuestionCard({
                 className={optionClassName}
                 onClick={() => !disabled && onSelectOption(option.id)}
                 disabled={disabled}
+                aria-label={`Option ${optionLetter}: ${option.text}`}
+                aria-pressed={isSelected}
               >
                 <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-current mr-3 font-semibold">
                   {optionLetter}
                 </span>
                 <span className="flex-1 text-left">{option.text}</span>
                 {showResult && isCorrectOption && (
-                  <CheckCircle2 className="h-5 w-5 text-green-600 ml-2" />
+                  <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 ml-2" />
                 )}
                 {showResult && isSelected && !isCorrectOption && (
-                  <XCircle className="h-5 w-5 text-red-600 ml-2" />
+                  <XCircle className="h-5 w-5 text-red-600 dark:text-red-400 ml-2" />
                 )}
               </button>
             );
@@ -114,19 +116,21 @@ export function QuestionCard({
         {showResult && question.explanation && (
           <div className={cn(
             "mt-6 p-4 rounded-lg",
-            isCorrect ? "bg-green-50 border border-green-200" : "bg-red-50 border border-red-200"
+            isCorrect
+              ? "bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800"
+              : "bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800"
           )}>
             <div className="flex items-start gap-2">
               {isCorrect ? (
-                <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5" />
+                <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5" />
               ) : (
-                <XCircle className="h-5 w-5 text-red-600 mt-0.5" />
+                <XCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5" />
               )}
               <div>
-                <p className={cn("font-semibold", isCorrect ? "text-green-800" : "text-red-800")}>
+                <p className={cn("font-semibold", isCorrect ? "text-green-800 dark:text-green-300" : "text-red-800 dark:text-red-300")}>
                   {isCorrect ? "Correct!" : "Incorrect"}
                 </p>
-                <p className="text-sm text-gray-700 mt-1">{question.explanation}</p>
+                <p className="text-sm text-muted-foreground mt-1">{question.explanation}</p>
               </div>
             </div>
           </div>

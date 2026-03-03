@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   Home,
   BookOpen,
@@ -60,13 +61,16 @@ export function Header() {
           })}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <div className="flex items-center gap-2">
+        {/* Theme Toggle & Mobile Menu */}
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
           <Button
             variant="ghost"
             size="icon"
             className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
               <X className="h-5 w-5" />

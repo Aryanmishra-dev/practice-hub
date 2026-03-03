@@ -55,7 +55,7 @@ export function QuizSummary({ result, onRetry, onHome, onReview }: QuizSummaryPr
         <CardContent>
           <div className="flex justify-center mb-6">
             <div className="relative w-40 h-40">
-              <svg className="w-full h-full transform -rotate-90">
+              <svg className="w-full h-full transform -rotate-90" role="img" aria-label={`Score: ${Math.round(result.accuracy)}%`}>
                 <circle
                   cx="80"
                   cy="80"
@@ -133,11 +133,11 @@ export function QuizSummary({ result, onRetry, onHome, onReview }: QuizSummaryPr
 
           {/* Recommendations */}
           {result.recommendations && result.recommendations.length > 0 && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-              <h4 className="font-semibold text-blue-800 mb-2">💡 Recommendations</h4>
+            <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
+              <h4 className="font-semibold text-blue-800 dark:text-blue-300 mb-2">💡 Recommendations</h4>
               <ul className="space-y-1">
                 {result.recommendations.map((rec, index) => (
-                  <li key={index} className="text-sm text-blue-700">• {rec}</li>
+                  <li key={index} className="text-sm text-blue-700 dark:text-blue-400">• {rec}</li>
                 ))}
               </ul>
             </div>

@@ -4,6 +4,8 @@ import "@/styles/globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ErrorBoundary } from "@/components/error-boundary";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,12 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <div className="relative flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-        <Toaster />
+        <ThemeProvider defaultTheme="system" storageKey="quiz-forge-theme">
+          <div className="relative flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">
+              <ErrorBoundary>{children}</ErrorBoundary>
+            </main>
+            <Footer />
+          </div>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
