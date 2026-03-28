@@ -105,7 +105,7 @@ async def health_check() -> dict[str, Any]:
         "status": "healthy",
         "version": "1.0.0",
         "api_version": settings.api_version,
-        "environment": "debug" if settings.debug else "production",
+        "environment": "debug" if settings.debug_mode else "production",
     }
 
 

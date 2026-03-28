@@ -1,4 +1,4 @@
-# 📚 PracticeHub
+#  PracticeHub
 
 A modern, full-stack **MCQ (Multiple Choice Questions) practice platform** for learning and skill assessment.
 
@@ -158,4 +158,4 @@ When the backend is running (http://localhost:8000), visit:
 
 ## License
 
-MIT License - See [LICENSE](LICENSE)
+MIT License - See [LICENSE]

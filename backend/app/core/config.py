@@ -10,15 +10,18 @@ class Settings(BaseSettings):
     api_host: str = "0.0.0.0"  # noqa: S104
     api_port: int = 8000
     api_version: str = "v1"
-    debug: bool = False
+    debug: str | None = None  # Will be validated
+
+    # Database
+    database_url: str = "postgresql://practicehub:securepassword@postgres:5432/practicehub"
+
+    # Redis (for session storage and caching)
+    redis_url: str = "redis://redis:6379/0"
 
     # Supabase
     supabase_url: str = ""
     supabase_key: str = ""
     supabase_jwt_secret: str = ""
-
-    # Database
-    database_url: str = ""
 
     # CORS
     cors_origins: str = "http://localhost:3000"
@@ -34,6 +37,13 @@ class Settings(BaseSettings):
     # Logging
     log_level: str = "INFO"
     sentry_dsn: str = ""
+
+    @property
+    def debug_mode(self) -> bool:
+        """Parse debug setting from environment."""
+        if self.debug is None:
+            return False
+        return self.debug.lower() in ("true", "1", "yes")
 
     @property
     def cors_origins_list(self) -> list[str]:

@@ -36,7 +36,7 @@ COPY --chown=appuser:appuser backend/ .
 
 # Copy quiz data files into backend/data/
 RUN mkdir -p data
-COPY --chown=appuser:appuser quiz_*.json data/
+COPY --chown=appuser:appuser database/seed/quiz_*.json data/
 
 # Switch to non-root user
 USER appuser

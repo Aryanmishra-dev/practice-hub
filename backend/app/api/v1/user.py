@@ -1,10 +1,16 @@
-"""User progress and analytics endpoints (mock data)."""
+"""User progress, analytics, and authentication endpoints."""
 
 import random  # noqa: S311 — used for mock data, not cryptography
 from datetime import UTC, datetime, timedelta
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, HTTPException, Query, status
+from pydantic import BaseModel, EmailStr, Field
 
+from app.core.security import (
+    create_access_token,
+    get_password_hash,
+    verify_password,
+)
 from app.models.schemas import (
     PaginatedResponse,
     QuizHistoryItem,
@@ -16,6 +22,109 @@ from app.models.schemas import (
 router = APIRouter()
 
 GUEST_USER_ID = "guest"
+
+
+# ============= Authentication Models =============
+class SignupRequest(BaseModel):
+    """User signup request."""
+
+    email: EmailStr = Field(..., description="User email address")
+    password: str = Field(..., min_length=8, description="Password (min 8 chars)")
+    full_name: str = Field(..., description="User full name")
+
+
+class LoginRequest(BaseModel):
+    """User login request."""
+
+    email: EmailStr = Field(..., description="User email address")
+    password: str = Field(..., description="User password")
+
+
+class AuthResponse(BaseModel):
+    """Authentication response with token."""
+
+    access_token: str = Field(..., description="JWT access token")
+    token_type: str = Field(default="bearer", description="Token type")
+    user_id: str = Field(..., description="User ID")
+    email: str = Field(..., description="User email")
+
+
+# In-memory user store (replace with database in production)
+_users_db: dict[str, dict] = {}
+
+
+@router.post("/auth/signup", response_model=AuthResponse, status_code=status.HTTP_201_CREATED)
+async def signup(request: SignupRequest) -> AuthResponse:
+    """Register a new user account.
+
+    Args:
+        request: Signup request with email, password, and full name.
+
+    Returns:
+        Authentication response with JWT token.
+
+    Raises:
+        HTTPException: If email already registered.
+    """
+    if request.email in _users_db:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Email already registered",
+        )
+
+    user_id = f"user_{len(_users_db) + 1}"
+    hashed_password = get_password_hash(request.password)
+
+    _users_db[request.email] = {
+        "user_id": user_id,
+        "email": request.email,
+        "full_name": request.full_name,
+        "password_hash": hashed_password,
+        "created_at": datetime.now(UTC),
+    }
+
+    token = create_access_token(data={"sub": user_id, "email": request.email})
+
+    return AuthResponse(
+        access_token=token,
+        token_type="bearer",  # noqa: S106
+        user_id=user_id,
+        email=request.email,
+    )
+
+
+@router.post("/auth/login", response_model=AuthResponse)
+async def login(request: LoginRequest) -> AuthResponse:
+    """Authenticate user and return JWT token.
+
+    Args:
+        request: Login request with email and password.
+
+    Returns:
+        Authentication response with JWT token.
+
+    Raises:
+        HTTPException: If credentials are invalid.
+    """
+    user = _users_db.get(request.email)
+
+    if not user or not verify_password(request.password, user["password_hash"]):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid email or password",
+        )
+
+    token = create_access_token(data={"sub": user["user_id"], "email": user["email"]})
+
+    return AuthResponse(
+        access_token=token,
+        token_type="bearer",  # noqa: S106
+        user_id=user["user_id"],
+        email=user["email"],
+    )
+
+
+# ============= Progress & Analytics =============
 
 
 def generate_mock_progress() -> UserProgressResponse:

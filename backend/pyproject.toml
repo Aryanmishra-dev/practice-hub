@@ -16,6 +16,8 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "slowapi>=0.1.9",
     "prometheus-fastapi-instrumentator>=6.1.0",
+    "redis>=5.0.0",
+    "psycopg2-binary>=2.9.0",
 ]
 
 [project.optional-dependencies]
@@ -74,15 +76,13 @@ indent-style = "space"
 # ============= Mypy =============
 [tool.mypy]
 python_version = "3.11"
-strict = false
-ignore_missing_imports = true
+strict = true
+warn_return_any = true
+warn_unused_overload = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
 check_untyped_defs = true
-warn_return_any = false
-warn_unused_configs = true
-warn_redundant_casts = true
-warn_unused_ignores = false
-show_error_codes = true
-disallow_untyped_defs = false
+ignore_missing_imports = false
 
 [[tool.mypy.overrides]]
 module = "tests.*"

@@ -24,7 +24,7 @@ _DATABASE_SEED_DIR = _PROJECT_ROOT / "database" / "seed"  # QUIZ-FORGE/database/
 
 def _resolve_data_file(filename: str) -> Path:
     """Find quiz data file, checking Docker path first, then database/seed, then project root.
-    
+
     Resolution order:
     1. Docker mounted path: /app/data/
     2. Local: database/seed/
@@ -35,13 +35,13 @@ def _resolve_data_file(filename: str) -> Path:
     if docker_path.exists():
         logger.debug(f"Found quiz data at Docker path: {docker_path}")
         return docker_path
-    
+
     # Local development path
     seed_path = _DATABASE_SEED_DIR / filename
     if seed_path.exists():
         logger.debug(f"Found quiz data at seed path: {seed_path}")
         return seed_path
-    
+
     # Fallback to project root (for backwards compatibility)
     project_root_path = _PROJECT_ROOT / filename
     logger.debug(f"Using fallback project root path: {project_root_path}")
