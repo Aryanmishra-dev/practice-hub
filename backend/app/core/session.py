@@ -1,7 +1,7 @@
 """Session management using Redis for production scalability."""
 
 import json
-from typing import Any
+from typing import Any, cast
 
 import redis
 
@@ -18,9 +18,7 @@ class SessionManager:
 
     def __init__(self) -> None:
         """Initialize Redis connection."""
-        self.redis_client: redis.Redis[str] = redis.from_url(
-            settings.redis_url, decode_responses=True
-        )
+        self.redis_client: redis.Redis = redis.from_url(settings.redis_url, decode_responses=True)
         self.prefix = "quiz_session:"
         self.ttl = 3600  # 1 hour
 
@@ -40,7 +38,10 @@ class SessionManager:
     def get_session(self, session_id: str) -> dict[str, Any] | None:
         """Retrieve a quiz session from Redis."""
         try:
-            data = self.redis_client.get(f"{self.prefix}{session_id}")
+            data = cast(
+                "str | bytes | bytearray | None",
+                self.redis_client.get(f"{self.prefix}{session_id}"),
+            )
             if data:
                 return json.loads(data)
             return None
@@ -73,7 +74,8 @@ class SessionManager:
     def session_exists(self, session_id: str) -> bool:
         """Check if a session exists in Redis."""
         try:
-            return self.redis_client.exists(f"{self.prefix}{session_id}") > 0
+            count = cast("int", self.redis_client.exists(f"{self.prefix}{session_id}"))
+            return count > 0
         except redis.RedisError as e:
             logger.error(f"Failed to check session existence: {e}")
             raise
