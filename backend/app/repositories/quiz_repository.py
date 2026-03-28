@@ -12,19 +12,40 @@ from app.core.logging import get_logger
 logger = get_logger("repositories.quiz")
 
 # Path to quiz JSON files
-# In local dev: files are at the project root (../../.. from this file)
-# In Docker: files are copied to /app/data/
+# Priority order:
+#  1. Docker container: /app/data/ (mounted from database/seed/)
+#  2. Local dev: database/seed/ (symlinked to backend at build time)
+#  3. Project root: fallback for backwards compatibility
 _PACKAGE_ROOT = Path(__file__).parent.parent.parent  # backend/
 _PROJECT_ROOT = _PACKAGE_ROOT.parent  # QUIZ-FORGE/
 _DATA_DIR = _PACKAGE_ROOT / "data"  # backend/data/
+_DATABASE_SEED_DIR = _PROJECT_ROOT / "database" / "seed"  # QUIZ-FORGE/database/seed/
 
 
 def _resolve_data_file(filename: str) -> Path:
-    """Find quiz data file, checking Docker path first, then project root."""
+    """Find quiz data file, checking Docker path first, then database/seed, then project root.
+    
+    Resolution order:
+    1. Docker mounted path: /app/data/
+    2. Local: database/seed/
+    3. Fallback: project root (backwards compatibility)
+    """
+    # Docker path (mounted from database/seed/)
     docker_path = _DATA_DIR / filename
     if docker_path.exists():
+        logger.debug(f"Found quiz data at Docker path: {docker_path}")
         return docker_path
-    return _PROJECT_ROOT / filename
+    
+    # Local development path
+    seed_path = _DATABASE_SEED_DIR / filename
+    if seed_path.exists():
+        logger.debug(f"Found quiz data at seed path: {seed_path}")
+        return seed_path
+    
+    # Fallback to project root (for backwards compatibility)
+    project_root_path = _PROJECT_ROOT / filename
+    logger.debug(f"Using fallback project root path: {project_root_path}")
+    return project_root_path
 
 
 QUIZ_FILES: dict[str, Path] = {

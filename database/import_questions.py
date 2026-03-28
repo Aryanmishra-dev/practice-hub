@@ -12,11 +12,13 @@ import uuid
 
 # Configuration
 PROJECT_ROOT = Path(__file__).parent.parent
+SEED_DIR = PROJECT_ROOT / "database" / "seed"
+
 QUIZ_FILES = {
-    "easy": PROJECT_ROOT / "quiz_easy.json",
-    "normal": PROJECT_ROOT / "quiz_normal.json",  # Maps to 'medium'
-    "hard": PROJECT_ROOT / "quiz_hard.json",
-    "expert": PROJECT_ROOT / "quiz_expert.json",
+    "easy": SEED_DIR / "quiz_easy.json",
+    "normal": SEED_DIR / "quiz_normal.json",  # Maps to 'medium'
+    "hard": SEED_DIR / "quiz_hard.json",
+    "expert": SEED_DIR / "quiz_expert.json",
 }
 
 DIFFICULTY_MAP = {
